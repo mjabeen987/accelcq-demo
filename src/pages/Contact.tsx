@@ -45,8 +45,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Office Location</h3>
                     <address className="not-italic text-gray-600">
-                      308 De Leon Ave, Fremont<br />
-                      California, 94539, USA
+                      691 S Milpitas Boulevard, Ste 217<br />
+                      Milpitas, California 95035, United States
                     </address>
                   </div>
                 </div>
@@ -75,8 +75,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Call Us</h3>
-                    <a href="tel:+15105551234" className="text-gray-600 hover:text-primary-600 transition-colors">
-                      +1 (510) 555-1234
+                    <a href="tel:+14088166610" className="text-gray-600 hover:text-primary-600 transition-colors">
+                      +1 (408) 816-6610
                     </a>
                     <p className="text-gray-500 text-sm mt-1">Monday to Friday, 9am to 5pm PST</p>
                   </div>
@@ -127,7 +127,7 @@ const Contact = () => {
             <h2 className="text-2xl font-bold mb-6 text-center">Our Location</h2>
             <div className="rounded-lg overflow-hidden shadow-md h-96">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.1412083630786!2d-121.9885217!3d37.5312364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc72a67a4b56d%3A0x3b5e47a786c5a359!2s308%20De%20Leon%20Ave%2C%20Fremont%2C%20CA%2094539!5e0!3m2!1sen!2sus!4v1682371879254!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.5437503334373!2d-121.9076748!3d37.4342464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc9c1d3f9c0bb%3A0x1234567890abcdef!2s691%20S%20Milpitas%20Blvd%20%23217%2C%20Milpitas%2C%20CA%2095035!5e0!3m2!1sen!2sus!4v1682371879254!5m2!1sen!2sus" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

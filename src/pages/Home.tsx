@@ -57,27 +57,7 @@ const Home = () => {
     }
   ];
 
-  // Testimonials data
-  const testimonials = [
-    {
-      quote: "AccelCQ's confidential computing solutions have transformed how we handle sensitive customer data, providing unmatched security while maintaining performance.",
-      author: "Sarah Johnson",
-      position: "CTO, FinSecure Inc.",
-      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    },
-    {
-      quote: "The quantum computing expertise at AccelCQ helped us solve optimization problems that were previously intractable with classical computing methods.",
-      author: "Michael Chen",
-      position: "Head of R&D, Quantum Innovations",
-      image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    },
-    {
-      quote: "Working with AccelCQ has been a game-changer for our secure data processing needs. Their team's technical knowledge is exceptional.",
-      author: "Jennifer Lopez",
-      position: "CISO, HealthTech Solutions",
-      image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    }
-  ];
+
 
   // Stats data
   const stats = [
@@ -270,48 +250,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section">
-        <div className="container-custom">
-          <SectionHeading
-            title="What Our Clients Say"
-            subtitle="Hear from organizations that have transformed their computing capabilities with our solutions."
-          />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div 
-                key={index}
-                className="card p-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
-                <div className="flex items-center">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.author} 
-                    className="w-12 h-12 rounded-full object-cover mr-4" 
-                  />
-                  <div>
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-gray-500">{testimonial.position}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="section bg-gradient-to-r from-primary-800 to-secondary-800 text-white">

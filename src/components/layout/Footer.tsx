@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, PieChart } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,9 +10,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <PieChart size={28} className="text-primary-400" />
-              <span className="text-xl font-bold">AccelCQ Inc</span>
+            <Link to="/" className="flex items-center mb-4">
+              <div className="bg-white rounded-lg p-2">
+                <img 
+                  src="/accelcq-logo.png" 
+                  alt="AccelCQ LLC" 
+                  className="h-8 w-auto"
+                />
+              </div>
             </Link>
             <p className="text-gray-400 mb-4">
               Cutting-edge software services company specializing in confidential computing and quantum computing solutions.
@@ -20,12 +25,12 @@ const Footer = () => {
             <address className="not-italic text-gray-400">
               <div className="flex items-start space-x-2 mb-2">
                 <MapPin size={18} className="text-gray-500 mt-1 flex-shrink-0" />
-                <span>308 De Leon Ave, Fremont<br />California, 94539, USA</span>
+                <span>691 S Milpitas Boulevard, Ste 217<br />Milpitas, California 95035, United States</span>
               </div>
               <div className="flex items-center space-x-2 mb-2">
                 <Phone size={18} className="text-gray-500" />
-                <a href="tel:+15105551234" className="hover:text-primary-400 transition-colors">
-                  +1 (510) 555-1234
+                <a href="tel:+14088166610" className="hover:text-primary-400 transition-colors">
+                  +1 (408) 816-6610
                 </a>
               </div>
               <div className="flex items-center space-x-2">
@@ -69,11 +74,6 @@ const Footer = () => {
               <li>
                 <Link to="/blog" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Careers
                 </Link>
               </li>
               <li>
@@ -161,7 +161,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} AccelCQ Inc. All rights reserved.
+            &copy; {currentYear} AccelCQ LLC. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <Link to="/privacy" className="text-gray-500 hover:text-primary-400 text-sm transition-colors">

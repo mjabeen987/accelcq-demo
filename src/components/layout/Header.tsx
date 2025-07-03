@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, PieChart } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +47,6 @@ const Header = () => {
       ],
     },
     { name: 'Blog', path: '/blog' },
-    { name: 'Careers', path: '/careers' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -58,11 +57,12 @@ const Header = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-          <PieChart size={32} className="text-primary-600" />
-          <span className={`text-xl font-bold transition-colors duration-300 ${
-            isScrolled ? 'text-gray-900' : 'text-white'
-          }`}>AccelCQ Inc</span>
+        <Link to="/" className="flex items-center" onClick={closeMenu}>
+          <img 
+            src="/accelcq-logo.png" 
+            alt="AccelCQ LLC" 
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
