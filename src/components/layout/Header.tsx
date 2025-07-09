@@ -58,11 +58,13 @@ const Header = () => {
     >
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeMenu}>
+        <div className={`rounded-lg p-2 ${!isScrolled ? 'bg-primary-50/30' : ''}`}>
           <img 
             src="/accelcq-logo.png" 
             alt="AccelCQ LLC" 
             className="h-10 w-auto"
           />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
