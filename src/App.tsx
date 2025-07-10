@@ -9,6 +9,9 @@ import LoadingSpinner from './components/common/LoadingSpinner';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const ConfidentialComputing = lazy(() => import('./pages/ConfidentialComputing'));
+const SecureEnclave = lazy(() => import('./pages/SecureEnclave'));
+const MemoryEncryption = lazy(() => import('./pages/MemoryEncryption'));
+const PrivacyPreservingComputation = lazy(() => import('./pages/PrivacyPreservingComputation'));
 const QuantumComputing = lazy(() => import('./pages/QuantumComputing'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const CaseStudyConfidentialComputing = lazy(() => import('./pages/CaseStudyConfidentialComputing'));
@@ -16,6 +19,7 @@ const CaseStudyQuantum = lazy(() => import('./pages/CaseStudyQuantum'));
 const CaseStudyEnterprise = lazy(() => import('./pages/CaseStudyEnterprise'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
+const FAQ = lazy(() => import('./pages/FAQ'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -30,6 +34,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services/confidential-computing" element={<ConfidentialComputing />} />
+            <Route path="/services/confidential-computing/secure-enclave" element={<SecureEnclave />} />
+            <Route path="/services/confidential-computing/memory-encryption" element={<MemoryEncryption />} />
+            <Route path="/services/confidential-computing/privacy-preserving-computation" element={<PrivacyPreservingComputation />} />
             <Route path="/services/quantum-computing" element={<QuantumComputing />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/confidential-computing" element={<CaseStudyConfidentialComputing />} />
@@ -37,6 +44,7 @@ function App() {
             <Route path="/case-studies/togaf-enterprise-architecture" element={<CaseStudyEnterprise />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

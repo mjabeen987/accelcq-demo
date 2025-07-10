@@ -61,11 +61,6 @@ const Contact = () => {
                       info@accelcq.com
                     </a>
                     <p className="text-gray-500 text-sm mt-1">For general inquiries</p>
-                    
-                    <a href="mailto:sales@accelcq.com" className="text-gray-600 hover:text-primary-600 transition-colors block mt-2">
-                      sales@accelcq.com
-                    </a>
-                    <p className="text-gray-500 text-sm mt-1">For sales inquiries</p>
                   </div>
                 </div>
                 

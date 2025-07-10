@@ -77,6 +77,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/faq" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Contact
                 </Link>
@@ -89,12 +94,17 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/services/confidential-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
+                <Link to="/services/confidential-computing/secure-enclave" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Secure Enclaves
                 </Link>
               </li>
               <li>
-                <Link to="/services/confidential-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
+                <Link to="/services/confidential-computing/memory-encryption" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Memory Encryption
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/confidential-computing/privacy-preserving-computation" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Privacy-Preserving Computation
                 </Link>
               </li>

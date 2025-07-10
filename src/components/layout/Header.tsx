@@ -33,7 +33,15 @@ const Header = () => {
     {
       name: 'Services',
       children: [
-        { name: 'Confidential Computing', path: '/services/confidential-computing' },
+        { 
+          name: 'Confidential Computing', 
+          path: '/services/confidential-computing',
+          children: [
+            { name: 'Secure Enclave', path: '/services/confidential-computing/secure-enclave' },
+            { name: 'Memory Encryption', path: '/services/confidential-computing/memory-encryption' },
+            { name: 'Privacy-Preserving Computation', path: '/services/confidential-computing/privacy-preserving-computation' }
+          ]
+        },
         { name: 'Quantum Computing', path: '/services/quantum-computing' },
       ],
     },
@@ -47,6 +55,7 @@ const Header = () => {
       ],
     },
     { name: 'Blog', path: '/blog' },
+    { name: 'FAQ', path: '/faq' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -103,17 +112,50 @@ const Header = () => {
                 <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
                   <div className="py-1">
                     {item.children.map((child, childIndex) => (
-                      <NavLink
-                        key={childIndex}
-                        to={child.path}
-                        className={({ isActive }) =>
-                          `block px-4 py-2 text-sm ${
-                            isActive ? 'bg-primary-50 text-primary-600' : 'text-gray-700 hover:bg-gray-100'
-                          }`
-                        }
-                      >
-                        {child.name}
-                      </NavLink>
+                      'children' in child && child.children ? (
+                        <div key={childIndex} className="relative group/nested">
+                          <NavLink
+                            to={child.path}
+                            className={({ isActive }) =>
+                              `flex items-center justify-between px-4 py-2 text-sm ${
+                                isActive ? 'bg-primary-50 text-primary-600' : 'text-gray-700 hover:bg-gray-100'
+                              }`
+                            }
+                          >
+                            {child.name}
+                            <ChevronDown size={14} className="rotate-[-90deg]" />
+                          </NavLink>
+                          <div className="absolute left-full top-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200">
+                            <div className="py-1">
+                              {child.children.map((nestedChild: any, nestedIndex: number) => (
+                                <NavLink
+                                  key={nestedIndex}
+                                  to={nestedChild.path}
+                                  className={({ isActive }) =>
+                                    `block px-4 py-2 text-sm ${
+                                      isActive ? 'bg-primary-50 text-primary-600' : 'text-gray-700 hover:bg-gray-100'
+                                    }`
+                                  }
+                                >
+                                  {nestedChild.name}
+                                </NavLink>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <NavLink
+                          key={childIndex}
+                          to={child.path}
+                          className={({ isActive }) =>
+                            `block px-4 py-2 text-sm ${
+                              isActive ? 'bg-primary-50 text-primary-600' : 'text-gray-700 hover:bg-gray-100'
+                            }`
+                          }
+                        >
+                          {child.name}
+                        </NavLink>
+                      )
                     ))}
                   </div>
                 </div>
@@ -187,17 +229,60 @@ const Header = () => {
                   {openDropdown === item.name && (
                     <div className="pl-4 mt-2 space-y-2 border-l-2 border-gray-200">
                       {item.children.map((child, childIndex) => (
-                        <NavLink
-                          key={childIndex}
-                          to={child.path}
-                          className={({ isActive }) =>
-                            `block py-2 ${
-                              isActive ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'
-                            }`
-                          }
-                        >
-                          {child.name}
-                        </NavLink>
+                        'children' in child && child.children ? (
+                          <div key={childIndex}>
+                            <div className="flex items-center justify-between">
+                              <NavLink
+                                to={child.path}
+                                className={({ isActive }) =>
+                                  `block py-2 ${
+                                    isActive ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'
+                                  }`
+                                }
+                              >
+                                {child.name}
+                              </NavLink>
+                              <button 
+                                className="flex items-center text-gray-600 hover:text-primary-600 py-2 px-2"
+                                onClick={() => toggleDropdown(`${item.name}-${child.name}`)}
+                              >
+                                <ChevronDown 
+                                  size={14} 
+                                  className={`transition-transform ${openDropdown === `${item.name}-${child.name}` ? 'rotate-180' : ''}`} 
+                                />
+                              </button>
+                            </div>
+                            {openDropdown === `${item.name}-${child.name}` && (
+                              <div className="pl-4 mt-2 space-y-2 border-l-2 border-gray-200">
+                                {child.children.map((nestedChild: any, nestedIndex: number) => (
+                                  <NavLink
+                                    key={nestedIndex}
+                                    to={nestedChild.path}
+                                    className={({ isActive }) =>
+                                      `block py-2 ${
+                                        isActive ? 'text-primary-600' : 'text-gray-500 hover:text-primary-600'
+                                      }`
+                                    }
+                                  >
+                                    {nestedChild.name}
+                                  </NavLink>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <NavLink
+                            key={childIndex}
+                            to={child.path}
+                            className={({ isActive }) =>
+                              `block py-2 ${
+                                isActive ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'
+                              }`
+                            }
+                          >
+                            {child.name}
+                          </NavLink>
+                        )
                       ))}
                     </div>
                   )}
