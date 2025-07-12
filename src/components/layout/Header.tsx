@@ -39,7 +39,8 @@ const Header = () => {
           children: [
             { name: 'Secure Enclave', path: '/services/confidential-computing/secure-enclave' },
             { name: 'Memory Encryption', path: '/services/confidential-computing/memory-encryption' },
-            { name: 'Privacy-Preserving Computation', path: '/services/confidential-computing/privacy-preserving-computation' }
+            { name: 'Privacy-Preserving Computation', path: '/services/confidential-computing/privacy-preserving-computation' },
+            { name: 'TEE-as-a-Service', path: '/services/tee-as-a-service' }
           ]
         },
         { name: 'Quantum Computing', path: '/services/quantum-computing' },
@@ -55,7 +56,15 @@ const Header = () => {
       ],
     },
     { name: 'Blog', path: '/blog' },
-    { name: 'FAQ', path: '/faq' },
+    {
+      name: 'FAQs',
+      path: '/faq',
+      children: [
+        { name: 'Why AccelCQ for Memory Encryption?', path: '/faq/memory-encryption' },
+        { name: 'Why AccelCQ for Trusted Execution Environments?', path: '/faq/trusted-execution-environments' },
+        { name: 'Why AccelCQ for Quantum Algorithm Development?', path: '/faq/quantum-algorithms' },
+      ],
+    },
     { name: 'Contact', path: '/contact' },
   ];
 

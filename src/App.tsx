@@ -13,6 +13,7 @@ const SecureEnclave = lazy(() => import('./pages/SecureEnclave'));
 const MemoryEncryption = lazy(() => import('./pages/MemoryEncryption'));
 const PrivacyPreservingComputation = lazy(() => import('./pages/PrivacyPreservingComputation'));
 const QuantumComputing = lazy(() => import('./pages/QuantumComputing'));
+const TEEAsAService = lazy(() => import('./pages/TEEAsAService'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const CaseStudyConfidentialComputing = lazy(() => import('./pages/CaseStudyConfidentialComputing'));
 const CaseStudyQuantum = lazy(() => import('./pages/CaseStudyQuantum'));
@@ -20,6 +21,8 @@ const CaseStudyEnterprise = lazy(() => import('./pages/CaseStudyEnterprise'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const FAQ = lazy(() => import('./pages/FAQ'));
+const TEEFaq = lazy(() => import('./pages/TEEFaq'));
+const QuantumAlgorithmsFaq = lazy(() => import('./pages/QuantumAlgorithmsFaq'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -38,6 +41,7 @@ function App() {
             <Route path="/services/confidential-computing/memory-encryption" element={<MemoryEncryption />} />
             <Route path="/services/confidential-computing/privacy-preserving-computation" element={<PrivacyPreservingComputation />} />
             <Route path="/services/quantum-computing" element={<QuantumComputing />} />
+            <Route path="/services/tee-as-a-service" element={<TEEAsAService />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/confidential-computing" element={<CaseStudyConfidentialComputing />} />
             <Route path="/case-studies/quantum-computing" element={<CaseStudyQuantum />} />
@@ -45,6 +49,9 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/faq/memory-encryption" element={<FAQ />} />
+            <Route path="/faq/trusted-execution-environments" element={<TEEFaq />} />
+            <Route path="/faq/quantum-algorithms" element={<QuantumAlgorithmsFaq />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
