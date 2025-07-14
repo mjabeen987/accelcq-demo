@@ -4,6 +4,7 @@ import { ArrowRight, Shield, Cpu, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/common/PageHeader';
 import SectionHeading from '../components/common/SectionHeading';
+import React from 'react'; // Added missing import for React
 
 const CaseStudies = () => {
   const fadeIn = {
@@ -58,14 +59,14 @@ const CaseStudies = () => {
       />
 
       {/* Overview Section */}
-      <section className="section">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Interactive Technology Demonstrations"
             subtitle="Explore our MVP demos showcasing the practical applications of advanced computing technologies"
           />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {caseStudies.map((study, index) => (
               <motion.div 
                 key={index}
@@ -76,8 +77,8 @@ const CaseStudies = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                  <div className="relative h-48 overflow-hidden">
+                <div className="glass bg-gradient-to-br from-white/90 via-primary-50/60 to-accent-50/60 rounded-3xl shadow-xl border border-secondary-100 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="relative h-48 overflow-hidden rounded-t-3xl">
                     <img 
                       src={study.image} 
                       alt={study.title} 
@@ -90,17 +91,14 @@ const CaseStudies = () => {
                       </span>
                     </div>
                   </div>
-                  
-                  <div className="p-6">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg mb-4 ${study.color}`}>
+                  <div className="p-8 flex flex-col items-center text-center">
+                    <div className={`flex items-center justify-center w-16 h-16 min-w-[4rem] min-h-[4rem] rounded-xl mb-4 ${study.color}`}> 
                       <div className={study.iconColor}>
-                        {study.icon}
+                        {React.cloneElement(study.icon, { size: 36 })}
                       </div>
                     </div>
-                    
-                    <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
-                    <p className="text-gray-600 mb-6">{study.description}</p>
-                    
+                    <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{study.title}</h3>
+                    <p className="text-secondary-700 mb-6">{study.description}</p>
                     <Link 
                       to={study.link}
                       className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors"
@@ -117,8 +115,9 @@ const CaseStudies = () => {
       </section>
 
       {/* Why Case Studies Matter Section */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               variants={fadeIn}
@@ -127,16 +126,15 @@ const CaseStudies = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text drop-shadow-md">
                 Why Case Studies Matter
               </h2>
-              <p className="text-gray-600 mb-4 text-lg">
+              <p className="text-secondary-700 mb-4 text-lg">
                 Our case studies provide hands-on demonstrations of how advanced computing technologies solve real-world challenges across different industries and use cases.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-secondary-700 mb-6">
                 Each demo is designed to showcase the practical benefits and implementation approaches of our solutions, helping you understand the potential impact on your organization.
               </p>
-              
               <div className="space-y-4">
                 {[
                   'Interactive demonstrations of core technologies',
@@ -146,14 +144,13 @@ const CaseStudies = () => {
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
                     <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">{item}</p>
+                    <p className="text-secondary-700">{item}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
-            
             <motion.div 
-              className="rounded-lg overflow-hidden shadow-xl"
+              className="rounded-3xl overflow-hidden shadow-2xl border border-secondary-100 glass"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -171,8 +168,9 @@ const CaseStudies = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-gradient-to-r from-primary-800 to-secondary-800 text-white">
-        <div className="container-custom text-center">
+      <section className="section bg-gradient-to-r from-primary-800 to-secondary-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10" />
+        <div className="container-custom relative z-10 text-center">
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -180,13 +178,13 @@ const CaseStudies = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Implement These Solutions?
             </h2>
-            <p className="text-gray-200 max-w-3xl mx-auto mb-8 text-lg">
+            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               Contact our team to discuss how these technologies can be customized and implemented for your specific use cases and requirements.
             </p>
-            <Link to="/contact" className="btn bg-white text-primary-800 hover:bg-gray-100">
+            <Link to="/contact" className="btn bg-white text-primary-800 hover:bg-secondary-50">
               Schedule a Consultation <ArrowRight className="ml-2" size={18} />
             </Link>
           </motion.div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Cpu, Lightbulb, Zap, BarChart, CheckCircle } from 'lucide-react';
 import PageHeader from '../components/common/PageHeader';
 import SectionHeading from '../components/common/SectionHeading';
+import React from 'react'; // Added missing import for React
 
 const QuantumComputing = () => {
   const fadeIn = {
@@ -308,27 +309,29 @@ const QuantumComputing = () => {
       </section>
 
       {/* Technologies Section */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Our Quantum Computing Technologies"
             subtitle="Cutting-edge quantum solutions for today's most challenging problems"
           />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {technologies.map((tech, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
+                className="glass bg-gradient-to-br from-white/90 via-primary-50/60 to-accent-50/60 p-8 rounded-3xl shadow-xl border border-secondary-100 flex flex-col items-center text-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-primary-600 mb-4">{tech.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{tech.title}</h3>
-                <p className="text-gray-600">{tech.description}</p>
+                <div className="flex items-center justify-center w-16 h-16 min-w-[4rem] min-h-[4rem] bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl shadow-lg mb-6">
+                  {React.cloneElement(tech.icon, { size: 36, className: 'text-white' })}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{tech.title}</h3>
+                <p className="text-secondary-700 text-base leading-relaxed">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -336,34 +339,34 @@ const QuantumComputing = () => {
       </section>
 
       {/* Use Cases Section */}
-      <section className="section">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Industry Applications"
             subtitle="How our quantum computing solutions are transforming various sectors"
           />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {useCases.map((useCase, index) => (
               <motion.div 
                 key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                className="glass bg-gradient-to-br from-white/80 via-primary-50/60 to-accent-50/60 rounded-3xl shadow-xl border border-secondary-100 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="h-48 overflow-hidden">
+                <div className="h-56 overflow-hidden rounded-t-3xl">
                   <img 
                     src={useCase.image} 
                     alt={useCase.title} 
                     className="w-full h-full object-cover" 
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
-                  <p className="text-gray-600">{useCase.description}</p>
+                <div className="p-8">
+                  <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{useCase.title}</h3>
+                  <p className="text-secondary-700">{useCase.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -372,11 +375,12 @@ const QuantumComputing = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div 
-              className="rounded-lg overflow-hidden shadow-xl"
+              className="rounded-3xl overflow-hidden shadow-2xl border border-secondary-100 glass"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -389,7 +393,6 @@ const QuantumComputing = () => {
                 className="w-full h-auto" 
               />
             </motion.div>
-            
             <motion.div
               variants={fadeIn}
               initial="hidden"
@@ -397,12 +400,12 @@ const QuantumComputing = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Benefits</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text drop-shadow-md">Benefits</h2>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
                     <CheckCircle size={20} className="text-primary-600 mr-3 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{benefit}</p>
+                    <p className="text-secondary-700">{benefit}</p>
                   </div>
                 ))}
               </div>
@@ -412,8 +415,9 @@ const QuantumComputing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-primary-600 text-white">
-        <div className="container-custom text-center">
+      <section className="section bg-gradient-to-r from-primary-600 to-accent-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10" />
+        <div className="container-custom relative z-10 text-center">
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -421,11 +425,13 @@ const QuantumComputing = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Explore Quantum Solutions?</h2>
-            <p className="text-gray-100 max-w-3xl mx-auto mb-8 text-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Explore Quantum Solutions?
+            </h2>
+            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               Contact us today to discuss how our quantum computing expertise can transform your organization's capabilities.
             </p>
-            <a href="/contact" className="btn bg-white text-primary-600 hover:bg-gray-100">
+            <a href="/contact" className="btn bg-white text-primary-600 hover:bg-secondary-50">
               Schedule a Consultation
             </a>
           </motion.div>

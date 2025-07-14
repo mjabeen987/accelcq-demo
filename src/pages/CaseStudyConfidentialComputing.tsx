@@ -4,6 +4,7 @@ import { Shield, Play, ExternalLink, CheckCircle, BarChart, Lock } from 'lucide-
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/common/PageHeader';
 import SectionHeading from '../components/common/SectionHeading';
+import React from 'react'; // Added missing import for React
 
 const CaseStudyConfidentialComputing = () => {
   const fadeIn = {
@@ -142,27 +143,29 @@ const CaseStudyConfidentialComputing = () => {
       </section>
 
       {/* Key Features */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Key Features"
             subtitle="Advanced capabilities that set our confidential computing solution apart"
           />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
+                className="glass bg-gradient-to-br from-white/90 via-primary-50/60 to-accent-50/60 p-8 rounded-3xl shadow-xl border border-secondary-100 flex flex-col items-center text-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-blue-600 mb-4">{feature.icon}</div>
-                <h3 className="text-lg font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <div className="flex items-center justify-center w-16 h-16 min-w-[4rem] min-h-[4rem] bg-gradient-to-br from-blue-500 to-accent-500 rounded-xl shadow-lg mb-6">
+                  {React.cloneElement(feature.icon, { size: 36, className: 'text-white' })}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{feature.title}</h3>
+                <p className="text-secondary-700 text-base leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -170,8 +173,9 @@ const CaseStudyConfidentialComputing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-blue-600 text-white">
-        <div className="container-custom text-center">
+      <section className="section bg-gradient-to-r from-blue-600 to-accent-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10" />
+        <div className="container-custom relative z-10 text-center">
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -179,10 +183,10 @@ const CaseStudyConfidentialComputing = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Secure Your Data Processing?
             </h2>
-            <p className="text-blue-100 max-w-3xl mx-auto mb-8 text-lg">
+            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               Experience the power of confidential computing with our sentiment analysis demo, then let's discuss implementing this technology for your specific needs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -190,7 +194,7 @@ const CaseStudyConfidentialComputing = () => {
                 <ExternalLink className="mr-2" size={18} />
                 Demo Coming Soon
               </button>
-              <Link to="/contact" className="btn bg-blue-500 text-white hover:bg-blue-400">
+              <Link to="/contact" className="btn bg-blue-500 text-white hover:bg-secondary-50">
                 Schedule Consultation
               </Link>
             </div>

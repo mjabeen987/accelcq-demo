@@ -4,6 +4,7 @@ import { Building, Play, ExternalLink, Network, Shield, Settings } from 'lucide-
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/common/PageHeader';
 import SectionHeading from '../components/common/SectionHeading';
+import React from 'react'; // Added missing import for React
 
 const CaseStudyTOGAF = () => {
   const fadeIn = {
@@ -186,13 +187,13 @@ const CaseStudyTOGAF = () => {
       </section>
 
       {/* Key Features */}
-      <section className="section">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Enterprise Architecture Features"
             subtitle="Advanced capabilities and compliance requirements for financial institutions"
           />
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -216,21 +217,23 @@ const CaseStudyTOGAF = () => {
             ].map((feature, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md border border-green-100"
+                className="glass bg-gradient-to-br from-white/90 via-primary-50/60 to-accent-50/60 p-8 rounded-3xl shadow-xl border border-secondary-100 flex flex-col items-center text-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <div className="text-green-600 mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-4">{feature.description}</p>
+                <div className="flex items-center justify-center w-16 h-16 min-w-[4rem] min-h-[4rem] bg-gradient-to-br from-green-500 to-accent-500 rounded-xl shadow-lg mb-6">
+                  {React.cloneElement(feature.icon, { size: 36, className: 'text-white' })}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{feature.title}</h3>
+                <p className="text-secondary-700 text-base leading-relaxed mb-4">{feature.description}</p>
                 <ul className="space-y-2">
                   {feature.features.map((item, idx) => (
                     <li key={idx} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                      <span className="text-gray-700">{item}</span>
+                      <span className="text-secondary-700">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -292,31 +295,26 @@ const CaseStudyTOGAF = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-green-600 text-white">
-        <div className="container-custom text-center">
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="section bg-gradient-to-r from-primary-600 to-accent-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10" />
+        <div className="container-custom relative z-10 text-center">
+          <div className="bg-white border border-secondary-100 rounded-3xl p-12 max-w-3xl mx-auto shadow-2xl">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
               Ready to Transform Your Enterprise Architecture?
             </h2>
-            <p className="text-green-100 max-w-3xl mx-auto mb-8 text-lg">
+            <p className="text-xl mb-8 text-secondary-700 max-w-2xl mx-auto">
               Experience the power of TOGAF-based enterprise architecture with our Financial Exchange Platform demo. See how proper architecture governance can transform your organization's capabilities.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn bg-white text-green-600 hover:bg-gray-100">
+              <button className="btn bg-white text-primary-600 opacity-50 cursor-not-allowed" disabled>
                 <ExternalLink className="mr-2" size={18} />
-                Explore Demo Platform
+                Demo Coming Soon
               </button>
-              <Link to="/contact" className="btn bg-green-500 text-white hover:bg-green-400">
+              <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-secondary-50">
                 Schedule Architecture Review
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>

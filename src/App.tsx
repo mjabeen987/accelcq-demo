@@ -37,7 +37,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services/confidential-computing" element={<ConfidentialComputing />} />
-            <Route path="/services/confidential-computing/secure-enclave" element={<SecureEnclave />} />
+            <Route path="/services/secure-enclave" element={<SecureEnclave />} />
             <Route path="/services/confidential-computing/memory-encryption" element={<MemoryEncryption />} />
             <Route path="/services/confidential-computing/privacy-preserving-computation" element={<PrivacyPreservingComputation />} />
             <Route path="/services/quantum-computing" element={<QuantumComputing />} />

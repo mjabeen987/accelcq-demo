@@ -16,12 +16,12 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   subtitleClass = '',
 }) => {
   return (
-    <div className={`mb-12 ${alignment === 'center' ? 'text-center' : 'text-left'}`}>
-      <h2 className={`font-bold mb-4 ${titleClass}`}>
+    <div className={`mb-16 ${alignment === 'center' ? 'text-center' : 'text-left'}`}>
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight ${titleClass}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className={`text-lg text-gray-600 max-w-3xl ${alignment === 'center' ? 'mx-auto' : ''} ${subtitleClass}`}>
+        <p className={`text-lg md:text-xl text-secondary-600 leading-relaxed max-w-4xl ${alignment === 'center' ? 'mx-auto' : ''} ${subtitleClass}`}>
           {subtitle}
         </p>
       )}

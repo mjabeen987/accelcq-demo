@@ -77,9 +77,10 @@ const ConfidentialComputing = () => {
       />
 
       {/* Overview Section */}
-      <section className="section">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="section bg-gradient-to-b from-white via-secondary-50 to-white/90 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10 pointer-events-none" />
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               variants={fadeIn}
               initial="hidden"
@@ -88,22 +89,21 @@ const ConfidentialComputing = () => {
               transition={{ duration: 0.8 }}
             >
               <span className="text-primary-600 font-semibold mb-2 block">Advanced Data Protection</span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 gradient-text drop-shadow-lg break-words whitespace-normal leading-tight overflow-visible">
                 Protecting Data In Use
               </h2>
-              <p className="text-gray-600 mb-4 text-lg">
+              <p className="text-secondary-700 mb-4 text-lg">
                 Confidential Computing is the protection of data in use by performing computation in a hardware-based Trusted Execution Environment (TEE). These secure and isolated environments prevent unauthorized access or modification of applications and data while they are in use.
               </p>
-              <p className="text-gray-600 mb-4">
+              <p className="text-secondary-700 mb-4">
                 While traditional security measures protect data at rest and in transit, confidential computing closes the gap by securing data during processing, ensuring complete data lifecycle protection.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-secondary-700 mb-6">
                 At AccelCQ, we specialize in implementing state-of-the-art confidential computing solutions tailored to your organization's specific needs and security requirements.
               </p>
             </motion.div>
-            
             <motion.div 
-              className="rounded-lg overflow-hidden shadow-xl"
+              className="rounded-3xl overflow-hidden shadow-2xl border border-secondary-100 glass"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -121,27 +121,29 @@ const ConfidentialComputing = () => {
       </section>
 
       {/* Technologies Section */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Our Confidential Computing Technologies"
             subtitle="Leveraging the latest hardware and software innovations to secure your data"
           />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {technologies.map((tech, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
+                className="glass bg-gradient-to-br from-white/80 via-primary-50/60 to-accent-50/60 p-8 rounded-3xl shadow-xl border border-secondary-100 flex flex-col items-center text-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-primary-600 mb-4">{tech.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{tech.title}</h3>
-                <p className="text-gray-600">{tech.description}</p>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-100 via-white/80 to-accent-100 mb-6 shadow-lg">
+                  <span className="text-primary-600 text-3xl">{tech.icon}</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{tech.title}</h3>
+                <p className="text-secondary-700 text-base leading-relaxed">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -149,15 +151,15 @@ const ConfidentialComputing = () => {
       </section>
 
       {/* Methodology Section */}
-      <section className="section">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-b from-white via-secondary-50 to-white/90 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Our Implementation Methodology"
             subtitle="A systematic approach to implementing confidential computing solutions"
             alignment="left"
           />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {[
               {
                 number: '01',
@@ -177,29 +179,28 @@ const ConfidentialComputing = () => {
             ].map((step, index) => (
               <motion.div 
                 key={index}
-                className="relative border border-gray-200 rounded-lg p-6"
+                className="relative glass bg-gradient-to-br from-white/90 via-primary-50/60 to-accent-50/60 rounded-3xl p-8 shadow-xl border border-secondary-100"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <span className="text-6xl font-bold text-gray-100 absolute right-4 top-2">{step.number}</span>
-                <h3 className="text-xl font-semibold mb-3 relative z-10">{step.title}</h3>
-                <p className="text-gray-600 relative z-10">{step.description}</p>
+                <span className="text-5xl font-bold text-primary-100 absolute right-6 top-4 opacity-60 select-none">{step.number}</span>
+                <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md relative z-10">{step.title}</h3>
+                <p className="text-secondary-700 relative z-10">{step.description}</p>
               </motion.div>
             ))}
           </div>
-          
           <motion.div 
-            className="mt-12 bg-primary-50 border border-primary-100 rounded-lg p-6"
+            className="mt-12 glass bg-gradient-to-br from-white/90 via-primary-50/60 to-accent-50/60 border border-primary-100 rounded-3xl p-8 shadow-xl"
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h3 className="text-xl font-semibold mb-4 text-primary-700">Our Technical Expertise</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary-700 gradient-text drop-shadow-md">Our Technical Expertise</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 'Intel SGX & TDX',
@@ -214,7 +215,7 @@ const ConfidentialComputing = () => {
               ].map((tech, index) => (
                 <div key={index} className="flex items-start">
                   <CheckCircle size={18} className="text-primary-600 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">{tech}</span>
+                  <span className="text-secondary-700">{tech}</span>
                 </div>
               ))}
             </div>
@@ -223,34 +224,34 @@ const ConfidentialComputing = () => {
       </section>
 
       {/* Use Cases Section */}
-      <section className="section bg-gray-50">
-        <div className="container-custom">
+      <section className="section bg-gradient-to-br from-secondary-50 via-white to-primary-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-5 pointer-events-none" />
+        <div className="container-custom relative z-10">
           <SectionHeading
             title="Use Cases"
             subtitle="How our confidential computing solutions are transforming industries"
           />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {useCases.map((useCase, index) => (
               <motion.div 
                 key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                className="glass bg-gradient-to-br from-white/80 via-primary-50/60 to-accent-50/60 rounded-3xl shadow-xl border border-secondary-100 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="h-48 overflow-hidden">
+                <div className="h-56 overflow-hidden rounded-t-3xl">
                   <img 
                     src={useCase.image} 
                     alt={useCase.title} 
                     className="w-full h-full object-cover" 
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
-                  <p className="text-gray-600">{useCase.description}</p>
+                <div className="p-8">
+                  <h3 className="text-xl font-semibold mb-3 gradient-text drop-shadow-md">{useCase.title}</h3>
+                  <p className="text-secondary-700">{useCase.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -259,11 +260,12 @@ const ConfidentialComputing = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="section">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="section bg-gradient-to-b from-white via-secondary-50 to-white/90 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10 pointer-events-none" />
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
-              className="rounded-lg overflow-hidden shadow-xl"
+              className="rounded-3xl overflow-hidden shadow-2xl border border-secondary-100 glass"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -276,7 +278,6 @@ const ConfidentialComputing = () => {
                 className="w-full h-auto" 
               />
             </motion.div>
-            
             <motion.div
               variants={fadeIn}
               initial="hidden"
@@ -284,12 +285,12 @@ const ConfidentialComputing = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">AI-Powered Benefits</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 gradient-text drop-shadow-lg">AI-Powered Benefits</h2>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
                     <CheckCircle size={20} className="text-primary-600 mr-3 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{benefit}</p>
+                    <p className="text-secondary-700">{benefit}</p>
                   </div>
                 ))}
               </div>
@@ -299,8 +300,9 @@ const ConfidentialComputing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-primary-600 text-white">
-        <div className="container-custom text-center">
+      <section className="section bg-gradient-to-r from-primary-600 to-accent-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-pattern opacity-10" />
+        <div className="container-custom relative z-10 text-center">
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -308,13 +310,15 @@ const ConfidentialComputing = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Secure Your Data Processing?</h2>
-            <p className="text-gray-100 max-w-3xl mx-auto mb-8 text-lg">
-              Contact us today to discuss how our confidential computing solutions can protect your most sensitive data.
-            </p>
-            <a href="/contact" className="btn bg-white text-primary-600 hover:bg-gray-100">
-              Schedule a Consultation
-            </a>
+            <div className="bg-white border border-secondary-100 rounded-3xl p-12 max-w-3xl mx-auto shadow-2xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">Ready to Secure Your Data Processing?</h2>
+              <p className="text-secondary-700 max-w-3xl mx-auto mb-8 text-lg">
+                Contact us today to discuss how our confidential computing solutions can protect your most sensitive data.
+              </p>
+              <a href="/contact" className="btn btn-primary text-lg px-8 py-4">
+                Schedule a Consultation
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

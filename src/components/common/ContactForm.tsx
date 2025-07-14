@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Send, Loader2, CheckCircle2, AlertTriangle, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ContactForm: React.FC = () => {
@@ -77,23 +77,22 @@ const ContactForm: React.FC = () => {
   };
 
   const inputClasses = (fieldName: string, hasError: boolean = false) => `
-    w-full px-4 py-4 text-gray-900 bg-gray-50 border-2 rounded-xl
-    transition-all duration-300 ease-in-out
-    focus:outline-none focus:bg-white
+    w-full px-6 py-4 text-secondary-900 bg-white border-2 rounded-2xl
+    transition-all duration-300 ease-in-out text-base
+    focus:outline-none focus:ring-4 focus:ring-primary-100
     ${hasError 
-      ? 'border-red-300 focus:border-red-500 focus:ring-4 focus:ring-red-100' 
+      ? 'border-red-300 focus:border-red-500' 
       : focusedField === fieldName || formData[fieldName as keyof typeof formData]
-        ? 'border-primary-500 focus:border-primary-600 focus:ring-4 focus:ring-primary-100'
-        : 'border-gray-200 hover:border-gray-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100'
+        ? 'border-primary-500 focus:border-primary-600'
+        : 'border-secondary-200 hover:border-secondary-300 focus:border-primary-500'
     }
   `;
 
   const labelClasses = (fieldName: string, hasValue: boolean) => `
-    absolute left-4 transition-all duration-300 ease-in-out pointer-events-none
+    absolute left-6 z-10 transition-all duration-300 ease-in-out pointer-events-none px-2
     ${focusedField === fieldName || hasValue
-      ? '-top-2 text-xs bg-white px-2 text-primary-600 font-medium'
-      : 'top-4 text-gray-500'
-    }
+      ? '-top-3 text-xs bg-white text-primary-600 font-semibold'
+      : 'top-4 text-secondary-500 bg-transparent'}
   `;
 
   return (
@@ -104,8 +103,8 @@ const ContactForm: React.FC = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="mb-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h3>
-          <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+          <h3 className="text-3xl font-bold text-secondary-900 mb-4">Get in Touch</h3>
+          <p className="text-secondary-600 text-lg">Fill out the form below and we'll get back to you as soon as possible.</p>
         </div>
 
         <AnimatePresence>
@@ -115,22 +114,22 @@ const ContactForm: React.FC = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className={`p-6 mb-8 rounded-2xl border-2 ${
+              className={`p-6 mb-8 rounded-2xl border-2 shadow-lg ${
                 formStatus.type === 'success' 
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800' 
+                  ? 'bg-accent-50 border-accent-200 text-accent-800' 
                   : formStatus.type === 'error'
                   ? 'bg-red-50 border-red-200 text-red-800'
-                  : 'bg-blue-50 border-blue-200 text-blue-800'
+                  : 'bg-primary-50 border-primary-200 text-primary-800'
               }`}
             >
               <div className="flex items-start">
-                <div className="flex-shrink-0 mr-3">
-                  {formStatus.type === 'success' && <CheckCircle2 size={24} className="text-emerald-600" />}
+                <div className="flex-shrink-0 mr-4">
+                  {formStatus.type === 'success' && <CheckCircle2 size={24} className="text-accent-600" />}
                   {formStatus.type === 'error' && <AlertTriangle size={24} className="text-red-600" />}
-                  {formStatus.type === 'loading' && <Loader2 size={24} className="text-blue-600 animate-spin" />}
+                  {formStatus.type === 'loading' && <Loader2 size={24} className="text-primary-600 animate-spin" />}
                 </div>
                 <div>
-                  <p className="font-medium">{formStatus.message}</p>
+                  <p className="font-medium text-base">{formStatus.message}</p>
                 </div>
               </div>
             </motion.div>
@@ -230,7 +229,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('subject')}
                 onBlur={() => setFocusedField(null)}
-                className={`${inputClasses('subject')} appearance-none cursor-pointer`}
+                className={`${inputClasses('subject')} appearance-none cursor-pointer pr-12`}
               >
                 <option value="">Select a subject</option>
                 <option value="Confidential Computing">Confidential Computing</option>
@@ -239,21 +238,14 @@ const ContactForm: React.FC = () => {
                 <option value="General Inquiry">General Inquiry</option>
                 <option value="Technical Support">Technical Support</option>
               </select>
-              <label 
-                htmlFor="subject" 
-                className={labelClasses('subject', !!formData.subject)}
-              >
-                Subject
-              </label>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+              {/* Removed the floating label for subject */}
+              <div className="absolute inset-y-0 right-0 flex items-center pr-6 pointer-events-none">
+                <ChevronDown size={20} className="text-secondary-400" />
               </div>
             </motion.div>
           </div>
           
-          {/* Message Field */}
+          {/* Message */}
           <motion.div 
             className="relative"
             initial={{ opacity: 0, y: 20 }}
@@ -263,25 +255,24 @@ const ContactForm: React.FC = () => {
             <textarea
               id="message"
               name="message"
-              rows={6}
               value={formData.message}
               onChange={handleChange}
               onFocus={() => setFocusedField('message')}
               onBlur={() => setFocusedField(null)}
+              rows={6}
               className={`${inputClasses('message')} resize-none`}
               required
-            ></textarea>
+            />
             <label 
               htmlFor="message" 
               className={labelClasses('message', !!formData.message)}
             >
-              Your Message <span className="text-red-500">*</span>
+              Message <span className="text-red-500">*</span>
             </label>
           </motion.div>
           
           {/* Submit Button */}
-          <motion.div 
-            className="pt-4"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -289,38 +280,20 @@ const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={formStatus.type === 'loading'}
-              className={`
-                group relative w-full md:w-auto min-w-[200px] px-8 py-4 
-                text-white font-semibold rounded-xl
-                transition-all duration-300 transform hover:scale-105
-                focus:outline-none focus:ring-4 focus:ring-primary-100
-                ${formStatus.type === 'loading' 
-                  ? 'bg-gray-400 cursor-not-allowed' 
-                  : 'bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 shadow-lg hover:shadow-xl'
-                }
-              `}
+              className="w-full btn btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <div className="flex items-center justify-center">
-                {formStatus.type === 'loading' ? (
-                  <>
-                    <Loader2 size={20} className="mr-2 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} className="mr-2" />
-                    Send Message
-                  </>
-                )}
-              </div>
-              
-              {/* Animated background on hover */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {formStatus.type === 'loading' ? (
+                <>
+                  <Loader2 size={20} className="mr-2 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <Send size={20} className="ml-2" />
+                </>
+              )}
             </button>
-            
-            <p className="text-sm text-gray-500 mt-4 text-center md:text-left">
-              We typically respond within 24 hours. For urgent matters, please call us directly.
-            </p>
           </motion.div>
         </form>
       </motion.div>

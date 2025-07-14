@@ -3,34 +3,30 @@ import { motion } from 'framer-motion';
 import { Shield, Award, CheckCircle, Users } from 'lucide-react';
 import PageHeader from '../components/common/PageHeader';
 import SectionHeading from '../components/common/SectionHeading';
-import TeamMember from '../components/common/TeamMember';
+// import TeamMember from '../components/common/TeamMember';
 
 const About = () => {
   const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 }
   };
 
   // Company values
   const values = [
     {
-      icon: <Shield size={28} />,
-      title: 'Security First',
+      icon: <Shield size={28} />, title: 'Security First',
       description: 'We prioritize the security and privacy of data in everything we build, ensuring the highest levels of protection for our clients.'
     },
     {
-      icon: <Award size={28} />,
-      title: 'Technical Excellence',
+      icon: <Award size={28} />, title: 'Technical Excellence',
       description: "We strive for excellence in all technical aspects, pushing the boundaries of what is possible in computing technology."
     },
     {
-      icon: <CheckCircle size={28} />,
-      title: 'Integrity',
+      icon: <CheckCircle size={28} />, title: 'Integrity',
       description: 'We operate with complete transparency and honesty, ensuring our clients can trust us with their most sensitive information.'
     },
     {
-      icon: <Users size={28} />,
-      title: 'Collaborative Innovation',
+      icon: <Users size={28} />, title: 'Collaborative Innovation',
       description: 'We work closely with our clients and partners to co-create solutions that address complex challenges.'
     }
   ];
@@ -90,39 +86,42 @@ const About = () => {
       />
 
       {/* Mission Section */}
-      <section className="section">
+      <section className="section bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
-              className="rounded-lg overflow-hidden shadow-xl"
-              variants={fadeIn}
+              className="relative"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              variants={fadeIn}
               transition={{ duration: 0.8 }}
             >
-              <img 
-                src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="AccelCQ Mission" 
-                className="w-full h-auto" 
-              />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-200/60 via-white/60 to-accent-200/60 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-secondary-100 glass">
+                <img 
+                  src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                  alt="AccelCQ Mission" 
+                  className="w-full h-96 object-cover object-center scale-105" 
+                />
+              </div>
             </motion.div>
             
             <motion.div
-              variants={fadeIn}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              variants={fadeIn}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-              <p className="text-gray-600 mb-6 text-lg">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-secondary-900 gradient-text drop-shadow-lg">Our Mission</h2>
+              <p className="text-secondary-700 mb-6 text-lg md:text-xl leading-relaxed">
                 At AccelCQ LLC, our mission is to revolutionize computing by seamlessly integrating confidential computing security with quantum computing power, enabling organizations to process their most sensitive data with unprecedented speed and security.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-secondary-700 mb-6 text-base md:text-lg">
                 Founded in 2021 by experts from leading technology companies and research institutions, AccelCQ was born from the recognition that as computing power advances, so too must the security protecting that data.
               </p>
-              <p className="text-gray-600">
+              <p className="text-secondary-700 text-base md:text-lg">
                 We envision a future where quantum computing capabilities are accessible to all organizations while maintaining the highest standards of data protection through confidential computing technologies.
               </p>
             </motion.div>
@@ -131,48 +130,45 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gradient-to-b from-secondary-50 via-white to-white/90">
         <div className="container-custom">
           <SectionHeading
             title="Our Core Values"
             subtitle="The principles that guide our work and relationships with clients"
           />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
             {values.map((value, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
-                variants={fadeIn}
+                className="glass bg-gradient-to-br from-white/80 via-primary-50/60 to-accent-50/60 p-8 rounded-3xl shadow-xl border border-secondary-100 flex flex-col items-center text-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                variants={fadeIn}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-primary-600 mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-100 via-white/80 to-accent-100 mb-6 shadow-lg">
+                  <span className="text-primary-600 text-3xl">{value.icon}</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-secondary-900 gradient-text drop-shadow-md">{value.title}</h3>
+                <p className="text-secondary-700 text-base leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 
-      Timeline Section - Commented out for now, will be restored later with more content
+      {/* Timeline Section - commented out for now */}
+      {/*
       <section className="section">
         <div className="container-custom">
           <SectionHeading
             title="Our Journey"
             subtitle="The key milestones in our company's growth and innovation"
           />
-          
           <div className="relative">
-            Timeline line
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-100"></div>
-            
             <div className="relative">
-              Timeline items
               {[
                 {
                   year: '2021',
@@ -229,15 +225,16 @@ const About = () => {
           </div>
         </div>
       </section>
+      */}
 
-      Team Section - Commented out for now, will be restored later with more content
+      {/* Team Section - commented out for now */}
+      {/*
       <section className="section bg-gray-50">
         <div className="container-custom">
           <SectionHeading
             title="Our Leadership Team"
             subtitle="Meet the experts driving innovation at AccelCQ LLC"
           />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div 
