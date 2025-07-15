@@ -210,7 +210,7 @@ const Contact = () => {
                     >
                       <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center mr-3">
                         <CheckCircle size={14} className="text-white" />
-                      </div>
+                  </div>
                       <span className="text-gray-700">{benefit}</span>
                     </motion.div>
                   ))}
@@ -256,17 +256,17 @@ const Contact = () => {
             
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.5437503334373!2d-121.9076748!3d37.4342464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc9c1d3f9c0bb%3A0x1234567890abcdef!2s691%20S%20Milpitas%20Blvd%20%23217%2C%20Milpitas%2C%20CA%2095035!5e0!3m2!1sen!2sus!4v1682371879254!5m2!1sen!2sus" 
-                  width="100%" 
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.5437503334373!2d-121.9076748!3d37.4342464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc9c1d3f9c0bb%3A0x1234567890abcdef!2s691%20S%20Milpitas%20Blvd%20%23217%2C%20Milpitas%2C%20CA%2095035!5e0!3m2!1sen!2sus!4v1682371879254!5m2!1sen!2sus" 
+                width="100%" 
                   height="400" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="AccelCQ Inc Office Location"
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="AccelCQ Inc Office Location"
                   className="w-full h-96 md:h-[500px]"
-                ></iframe>
+              ></iframe>
               </div>
               
               {/* Floating Address Card */}

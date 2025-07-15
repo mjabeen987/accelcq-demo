@@ -6,8 +6,8 @@ const Footer = () => {
   
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container-custom py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container-custom pt-6 pb-12 md:pt-8 md:pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center mb-4">
@@ -42,10 +42,10 @@ const Footer = () => {
             </address>
           </div>
           
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+          {/* Company */}
+          <div className="mt-16">
+            <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
+            <ul className="space-y-2 ml-4">
               <li>
                 <Link to="/" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Home
@@ -57,23 +57,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services/confidential-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Confidential Computing
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/quantum-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Quantum Computing
-                </Link>
-              </li>
-              <li>
-                <Link to="/case-studies" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Blog
+                <Link to="/contact" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Contact
                 </Link>
               </li>
               <li>
@@ -82,20 +67,20 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Contact
+                <Link to="/blog" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Blog
                 </Link>
               </li>
             </ul>
           </div>
           
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
+          {/* Confidential Computing */}
+          <div className="mt-16">
+            <h4 className="text-lg font-semibold mb-4 text-white">Confidential Computing</h4>
+            <ul className="space-y-2 ml-4">
               <li>
                 <Link to="/services/confidential-computing/secure-enclave" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Secure Enclaves
+                  Secure Enclave
                 </Link>
               </li>
               <li>
@@ -109,10 +94,22 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services/confidential-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Trusted Execution Environments
+                <Link to="/services/confidential-computing/tee-as-a-service" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Trusted Execution Environment
                 </Link>
               </li>
+              <li>
+                <Link to="/case-studies/confidential-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Case Studies
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Quantum Computing */}
+          <div className="mt-16">
+            <h4 className="text-lg font-semibold mb-4 text-white">Quantum Computing</h4>
+            <ul className="space-y-2 ml-4">
               <li>
                 <Link to="/services/quantum-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Quantum Algorithm Development
@@ -128,26 +125,31 @@ const Footer = () => {
                   Post-Quantum Cryptography
                 </Link>
               </li>
+              <li>
+                <Link to="/case-studies/quantum-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Case Studies
+                </Link>
+              </li>
             </ul>
           </div>
           
           {/* Newsletter */}
-          <div>
+          <div className="mt-16">
             <h4 className="text-lg font-semibold mb-4">Stay Updated</h4>
             <p className="text-gray-400 mb-4">
               Subscribe to our newsletter for the latest updates on confidential and quantum computing.
             </p>
             <form className="mb-4">
-              <div className="flex">
+              <div className="flex flex-col space-y-2">
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="flex-1 px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-1 focus:ring-primary-500"
+                  className="px-3 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-1 focus:ring-primary-500 text-sm"
                   required
                 />
                 <button 
                   type="submit" 
-                  className="bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-r-md transition-colors"
+                  className="bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md transition-colors text-sm"
                 >
                   Subscribe
                 </button>

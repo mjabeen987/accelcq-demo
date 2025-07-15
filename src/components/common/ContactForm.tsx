@@ -47,7 +47,7 @@ const ContactForm: React.FC = () => {
       });
       return;
     }
-
+    
     // Set loading state
     setFormStatus({
       type: 'loading',
@@ -109,7 +109,7 @@ const ContactForm: React.FC = () => {
         </div>
 
         <AnimatePresence>
-          {formStatus.type && (
+      {formStatus.type && (
             <motion.div 
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -121,8 +121,8 @@ const ContactForm: React.FC = () => {
                   : formStatus.type === 'error'
                   ? 'bg-red-50 border-red-200 text-red-800'
                   : 'bg-blue-50 border-blue-200 text-blue-800'
-              }`}
-            >
+          }`}
+        >
               <div className="flex items-start">
                 <div className="flex-shrink-0 mr-3">
                   {formStatus.type === 'success' && <CheckCircle2 size={24} className="text-emerald-600" />}
@@ -132,37 +132,37 @@ const ContactForm: React.FC = () => {
                 <div>
                   <p className="font-medium">{formStatus.message}</p>
                 </div>
-              </div>
+        </div>
             </motion.div>
-          )}
+      )}
         </AnimatePresence>
-
+      
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Name and Email Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div 
               className="relative"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
                 onFocus={() => setFocusedField('name')}
                 onBlur={() => setFocusedField(null)}
                 className={inputClasses('name')}
-                required
-              />
+            required
+          />
               <label 
                 htmlFor="name" 
                 className={labelClasses('name', !!formData.name)}
               >
                 Full Name <span className="text-red-500">*</span>
-              </label>
+          </label>
             </motion.div>
             
             <motion.div 
@@ -171,17 +171,17 @@ const ContactForm: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
                 onFocus={() => setFocusedField('email')}
                 onBlur={() => setFocusedField(null)}
                 className={inputClasses('email')}
-                required
-              />
+            required
+          />
               <label 
                 htmlFor="email" 
                 className={labelClasses('email', !!formData.email)}
@@ -189,22 +189,22 @@ const ContactForm: React.FC = () => {
                 Email Address <span className="text-red-500">*</span>
               </label>
             </motion.div>
-          </div>
-          
+      </div>
+      
           {/* Phone and Subject Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div 
               className="relative"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
                 onFocus={() => setFocusedField('phone')}
                 onBlur={() => setFocusedField(null)}
                 className={inputClasses('phone')}
@@ -223,22 +223,22 @@ const ContactForm: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <select
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
+          <select
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
                 onFocus={() => setFocusedField('subject')}
                 onBlur={() => setFocusedField(null)}
                 className={`${inputClasses('subject')} appearance-none cursor-pointer`}
-              >
+          >
                 <option value="">Select a subject</option>
-                <option value="Confidential Computing">Confidential Computing</option>
-                <option value="Quantum Computing">Quantum Computing</option>
+            <option value="Confidential Computing">Confidential Computing</option>
+            <option value="Quantum Computing">Quantum Computing</option>
                 <option value="Partnership">Partnership Opportunity</option>
-                <option value="General Inquiry">General Inquiry</option>
+            <option value="General Inquiry">General Inquiry</option>
                 <option value="Technical Support">Technical Support</option>
-              </select>
+          </select>
               <label 
                 htmlFor="subject" 
                 className={labelClasses('subject', !!formData.subject)}
@@ -249,10 +249,10 @@ const ContactForm: React.FC = () => {
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </div>
+        </div>
             </motion.div>
-          </div>
-          
+      </div>
+      
           {/* Message Field */}
           <motion.div 
             className="relative"
@@ -260,17 +260,17 @@ const ContactForm: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <textarea
-              id="message"
-              name="message"
+        <textarea
+          id="message"
+          name="message"
               rows={6}
-              value={formData.message}
-              onChange={handleChange}
+          value={formData.message}
+          onChange={handleChange}
               onFocus={() => setFocusedField('message')}
               onBlur={() => setFocusedField(null)}
               className={`${inputClasses('message')} resize-none`}
-              required
-            ></textarea>
+          required
+        ></textarea>
             <label 
               htmlFor="message" 
               className={labelClasses('message', !!formData.message)}
@@ -278,7 +278,7 @@ const ContactForm: React.FC = () => {
               Your Message <span className="text-red-500">*</span>
             </label>
           </motion.div>
-          
+      
           {/* Submit Button */}
           <motion.div 
             className="pt-4"
@@ -286,8 +286,8 @@ const ContactForm: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <button
-              type="submit"
+        <button
+          type="submit"
               disabled={formStatus.type === 'loading'}
               className={`
                 group relative w-full md:w-auto min-w-[200px] px-8 py-4 
@@ -309,14 +309,14 @@ const ContactForm: React.FC = () => {
                 ) : (
                   <>
                     <Send size={20} className="mr-2" />
-                    Send Message
+          Send Message
                   </>
                 )}
               </div>
               
               {/* Animated background on hover */}
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+        </button>
             
             <p className="text-sm text-gray-500 mt-4 text-center md:text-left">
               We typically respond within 24 hours. For urgent matters, please call us directly.
@@ -324,7 +324,7 @@ const ContactForm: React.FC = () => {
           </motion.div>
         </form>
       </motion.div>
-    </div>
+      </div>
   );
 };
 

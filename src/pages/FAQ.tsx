@@ -41,21 +41,21 @@ const FAQ = () => {
           </p>
           
           <div className="space-y-4">
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">Depth of Experience</h4>
               <p className="text-gray-700 leading-relaxed">
-                We specialize in hardware-backed memory encryption across all major clouds (Azure, AWS, Google, IBM) 
-                and on-premises TEEs (Intel SGX, AMD SEV, etc.), so we anticipate and avoid pitfalls, performance 
-                regressions, and misconfigurations that in-house teams may overlook.
-              </p>
-            </div>
+              We specialize in hardware-backed memory encryption across all major clouds (Azure, AWS, Google, IBM) 
+              and on-premises TEEs (Intel SGX, AMD SEV, etc.), so we anticipate and avoid pitfalls, performance 
+              regressions, and misconfigurations that in-house teams may overlook.
+            </p>
+          </div>
             
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">End-to-End Security</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Encryption is just the foundation—secure attestation, monitoring, audit logging, and lifecycle key 
-                management are essential for ongoing protection and compliance.
-              </p>
+            <p className="text-gray-700 leading-relaxed">
+              Encryption is just the foundation—secure attestation, monitoring, audit logging, and lifecycle key 
+              management are essential for ongoing protection and compliance.
+            </p>
             </div>
           </div>
         </div>
@@ -72,20 +72,20 @@ const FAQ = () => {
           </p>
           
           <div className="space-y-4">
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">Continuous Compliance Alignment</h4>
               <p className="text-gray-700 leading-relaxed">
                 Automated checks, reporting, and attestation tailored to HIPAA, GDPR, PCI, and more—so audits and 
-                certifications don't disrupt your business.
-              </p>
-            </div>
+              certifications don't disrupt your business.
+            </p>
+          </div>
             
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">Rapid Response</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Proactive monitoring and threat detection—especially important as attacks evolve or new vulnerabilities 
-                are discovered.
-              </p>
+            <p className="text-gray-700 leading-relaxed">
+              Proactive monitoring and threat detection—especially important as attacks evolve or new vulnerabilities 
+              are discovered.
+            </p>
             </div>
           </div>
         </div>
@@ -98,21 +98,21 @@ const FAQ = () => {
       content: (
         <div className="space-y-6">
           <div className="space-y-4">
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">Seamless Integration</h4>
               <p className="text-gray-700 leading-relaxed">
-                We help you optimize memory encryption for real-world workloads—balancing security, performance, and cost, 
-                whether you're cloud-native or hybrid.
-              </p>
-            </div>
+              We help you optimize memory encryption for real-world workloads—balancing security, performance, and cost, 
+              whether you're cloud-native or hybrid.
+            </p>
+          </div>
             
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">Feature Evolution</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Even if the initial job seems "one-off," security and compliance requirements rarely stay static. AccelCQ 
-                keeps you ahead of new cloud features (like confidential containers or next-gen TEEs) and regulatory 
-                changes—future-proofing your investment.
-              </p>
+            <p className="text-gray-700 leading-relaxed">
+              Even if the initial job seems "one-off," security and compliance requirements rarely stay static. AccelCQ 
+              keeps you ahead of new cloud features (like confidential containers or next-gen TEEs) and regulatory 
+              changes—future-proofing your investment.
+            </p>
             </div>
           </div>
         </div>
@@ -125,22 +125,22 @@ const FAQ = () => {
       content: (
         <div className="space-y-6">
           <div className="space-y-4">
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">On-Premises and Hybrid Cloud</h4>
               <p className="text-gray-700 leading-relaxed">
-                For organizations running confidential workloads in private data centers or hybrid clouds, AccelCQ 
-                delivers the same level of expertise, integrating TEEs (Intel SGX, AMD SEV, ARM TrustZone) and memory 
-                encryption solutions without relying on public cloud infrastructure.
-              </p>
-            </div>
+              For organizations running confidential workloads in private data centers or hybrid clouds, AccelCQ 
+              delivers the same level of expertise, integrating TEEs (Intel SGX, AMD SEV, ARM TrustZone) and memory 
+              encryption solutions without relying on public cloud infrastructure.
+            </p>
+          </div>
             
-            <div>
+          <div>
               <h4 className="font-semibold text-gray-900 mb-2">Complex Multi-Cloud Deployments</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Coordinating consistent security posture and memory encryption across multiple clouds and/or on-prem 
-                environments can be challenging—we make it seamless.
-              </p>
-            </div>
+            <p className="text-gray-700 leading-relaxed">
+              Coordinating consistent security posture and memory encryption across multiple clouds and/or on-prem 
+              environments can be challenging—we make it seamless.
+            </p>
+          </div>
           </div>
         </div>
       )
@@ -218,11 +218,11 @@ const FAQ = () => {
             variants={fadeIn}
             transition={{ duration: 0.6 }}
           >
-            <SectionHeading
+          <SectionHeading
               title="Why Choose AccelCQ for Memory Encryption?"
               subtitle="Even if you have a cloud team, here's why AccelCQ delivers specialized expertise for both cloud and on-premises scenarios"
-              alignment="center"
-            />
+            alignment="center"
+          />
           </motion.div>
           
           <div className="max-w-4xl mx-auto">
@@ -249,9 +249,9 @@ const FAQ = () => {
                         <div className="text-indigo-600 mr-4">
                           {faq.icon}
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-900 pr-4">
-                          {faq.question}
-                        </h3>
+                      <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                        {faq.question}
+                      </h3>
                       </div>
                       <motion.div
                         animate={{ rotate: openQuestion === faq.id ? 180 : 0 }}
