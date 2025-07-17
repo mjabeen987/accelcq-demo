@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container-custom pt-6 pb-12 md:pt-8 md:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center mb-4">
@@ -128,6 +128,33 @@ const Footer = () => {
               <li>
                 <Link to="/case-studies/quantum-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Case Studies
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Enterprise Architecture */}
+          <div className="mt-16">
+            <h4 className="text-lg font-semibold mb-4 text-white">Enterprise Architecture</h4>
+            <ul className="space-y-2 ml-4">
+              <li>
+                <Link to="/services/enterprise-architecture#togaf-10" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  TOGAF 10
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/enterprise-architecture#sparx-ea" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Sparx EA
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/enterprise-architecture" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Scripting for EA
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/enterprise-architecture" className="text-gray-400 hover:text-primary-400 transition-colors">
+                  Case Study
                 </Link>
               </li>
             </ul>

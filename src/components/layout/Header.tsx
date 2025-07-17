@@ -44,6 +44,7 @@ const Header = () => {
           ]
         },
         { name: 'Quantum Computing', path: '/services/quantum-computing' },
+        { name: 'Enterprise Architecture', path: '/services/enterprise-architecture' },
       ],
     },
     {

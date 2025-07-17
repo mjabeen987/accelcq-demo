@@ -13,6 +13,7 @@ const SecureEnclave = lazy(() => import('./pages/SecureEnclave'));
 const MemoryEncryption = lazy(() => import('./pages/MemoryEncryption'));
 const PrivacyPreservingComputation = lazy(() => import('./pages/PrivacyPreservingComputation'));
 const QuantumComputing = lazy(() => import('./pages/QuantumComputing'));
+const EnterpriseArchitecture = lazy(() => import('./pages/EnterpriseArchitecture'));
 const TEEAsAService = lazy(() => import('./pages/TEEAsAService'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const CaseStudyConfidentialComputing = lazy(() => import('./pages/CaseStudyConfidentialComputing'));
@@ -41,6 +42,7 @@ function App() {
             <Route path="/services/confidential-computing/memory-encryption" element={<MemoryEncryption />} />
             <Route path="/services/confidential-computing/privacy-preserving-computation" element={<PrivacyPreservingComputation />} />
             <Route path="/services/quantum-computing" element={<QuantumComputing />} />
+            <Route path="/services/enterprise-architecture" element={<EnterpriseArchitecture />} />
             <Route path="/services/tee-as-a-service" element={<TEEAsAService />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/confidential-computing" element={<CaseStudyConfidentialComputing />} />
