@@ -42,9 +42,9 @@ const Contact = () => {
         <div className="container-custom relative z-10 pt-32 pb-20">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
               Let's Build Something Amazing Together
@@ -59,9 +59,9 @@ const Contact = () => {
             {/* Quick Action Buttons */}
             <motion.div 
               className="flex flex-wrap justify-center gap-4 mb-16"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               <motion.a 
                 href="tel:+14088166610"
@@ -97,10 +97,10 @@ const Contact = () => {
         <div className="container-custom">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 -mt-16 relative z-10"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {[
               {
@@ -140,11 +140,11 @@ const Contact = () => {
                 bgGradient: "from-orange-50 to-orange-100"
               }
             ].map((contact, index) => (
-              <motion.a
+              <a
                 key={index}
                 href={contact.href}
-                variants={scaleIn}
-                className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 opacity-0 animate-fade-in"
+                style={{ animationDelay: `${index * 100 + 200}ms`, animationFillMode: 'forwards' }}
                 onClick={contact.href.startsWith('#') ? (e) => {
                   e.preventDefault();
                   document.querySelector(contact.href)?.scrollIntoView({ behavior: 'smooth' });
@@ -162,7 +162,7 @@ const Contact = () => {
                     <ArrowRight size={16} className="text-gray-500" />
                   </div>
                 </div>
-              </motion.a>
+              </a>
             ))}
           </motion.div>
         </div>
@@ -175,11 +175,10 @@ const Contact = () => {
             {/* Left Side - Info */}
             <motion.div 
               className="lg:col-span-2"
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="max-w-md">
                 <span className="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">
@@ -221,11 +220,10 @@ const Contact = () => {
             {/* Right Side - Form */}
             <motion.div 
               className="lg:col-span-3"
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
               <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
                 <ContactForm />

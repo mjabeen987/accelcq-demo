@@ -125,9 +125,20 @@ const ContactForm: React.FC = () => {
         >
               <div className="flex items-start">
                 <div className="flex-shrink-0 mr-3">
-                  {formStatus.type === 'success' && <CheckCircle2 size={24} className="text-emerald-600" />}
-                  {formStatus.type === 'error' && <AlertTriangle size={24} className="text-red-600" />}
-                  {formStatus.type === 'loading' && <Loader2 size={24} className="text-blue-600 animate-spin" />}
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    {formStatus.type === 'success' && <CheckCircle2 size={24} className="text-emerald-600" />}
+                    {formStatus.type === 'error' && <AlertTriangle size={24} className="text-red-600" />}
+                    {formStatus.type === 'loading' && (
+                      <Loader2 
+                        size={24} 
+                        className="text-blue-600" 
+                        style={{ 
+                          animation: 'spin 1s linear infinite',
+                          transformOrigin: 'center'
+                        }} 
+                      />
+                    )}
+                  </div>
                 </div>
                 <div>
                   <p className="font-medium">{formStatus.message}</p>

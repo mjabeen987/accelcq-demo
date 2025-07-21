@@ -100,7 +100,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/case-studies/confidential-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Case Studies
+                  Case Study
                 </Link>
               </li>
             </ul>
@@ -127,7 +127,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/case-studies/quantum-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
-                  Case Studies
+                  Case Study
                 </Link>
               </li>
             </ul>

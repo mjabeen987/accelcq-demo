@@ -73,7 +73,7 @@ const Header = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-gray-50 shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
@@ -120,7 +120,7 @@ const Header = () => {
                     <ChevronDown size={16} className="ml-1" />
                   </button>
                 )}
-                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
+                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-gray-50 ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
                   <div className="py-1">
                     {item.children.map((child, childIndex) => (
                       'children' in child && child.children ? (
@@ -136,7 +136,7 @@ const Header = () => {
                             {child.name}
                             <ChevronDown size={14} className="rotate-[-90deg]" />
                           </NavLink>
-                          <div className="absolute left-full top-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200">
+                          <div className="absolute left-full top-0 w-56 rounded-md shadow-lg bg-gray-50 ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200">
                             <div className="py-1">
                               {child.children.map((nestedChild: any, nestedIndex: number) => (
                                 <NavLink
@@ -205,7 +205,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-xl absolute top-full left-0 right-0 animate-fade-in-down">
+        <div className="md:hidden bg-gray-50 shadow-xl absolute top-full left-0 right-0 animate-fade-in-down">
           <nav className="container-custom py-4 flex flex-col space-y-4">
             {navItems.map((item, index) => 
               item.children ? (
