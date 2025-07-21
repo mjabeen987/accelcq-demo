@@ -32,6 +32,7 @@ const Header = () => {
     { name: 'About', path: '/about' },
     {
       name: 'Services',
+      path: '/services',
       children: [
         { 
           name: 'Confidential Computing', 

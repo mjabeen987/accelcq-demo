@@ -195,7 +195,7 @@ const Home = () => {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <ServiceCard {...service} />
+                <ServiceCard {...service} showLearnMore={false} />
               </motion.div>
             ))}
           </motion.div>

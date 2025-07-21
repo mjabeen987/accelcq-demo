@@ -17,7 +17,7 @@ const ScrollToTop = () => {
       return () => clearTimeout(timeoutId);
     } else {
       // If no hash, scroll to top
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     }
   }, [pathname, hash]);
 

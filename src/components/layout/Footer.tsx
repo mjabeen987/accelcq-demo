@@ -94,7 +94,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services/confidential-computing/tee-as-a-service" className="text-gray-400 hover:text-primary-400 transition-colors">
+                <Link to="/services/tee-as-a-service" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Trusted Execution Environment
                 </Link>
               </li>
@@ -108,7 +108,7 @@ const Footer = () => {
           
           {/* Quantum Computing */}
           <div className="mt-16">
-            <h4 className="text-lg font-semibold mb-4 text-white">Quantum Computing</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Quantum<br />Computing</h4>
             <ul className="space-y-2 ml-4">
               <li>
                 <Link to="/services/quantum-computing" className="text-gray-400 hover:text-primary-400 transition-colors">
@@ -153,7 +153,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services/enterprise-architecture" className="text-gray-400 hover:text-primary-400 transition-colors">
+                <Link to="/case-studies/togaf-enterprise-architecture" className="text-gray-400 hover:text-primary-400 transition-colors">
                   Case Study
                 </Link>
               </li>
