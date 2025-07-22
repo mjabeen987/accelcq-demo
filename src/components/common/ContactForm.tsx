@@ -54,26 +54,58 @@ const ContactForm: React.FC = () => {
       message: 'Sending your message...',
     });
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Send data to Make.com webhook
+      const response = await fetch('https://hook.us2.make.com/rct6yqs3rdcvc6cnfjfxt2lq89884evy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          timestamp: new Date().toISOString(),
+          source: 'AccelCQ Website Contact Form'
+        }),
+      });
+      
+      if (response.ok) {
+        setFormStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.',
+        });
+        
+        // Clear form data on success
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+        
+        // Reset success message after 8 seconds
+        setTimeout(() => {
+          setFormStatus({ type: null, message: '' });
+        }, 8000);
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error sending form data:', error);
       setFormStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.',
+        type: 'error',
+        message: 'Sorry, there was an error sending your message. Please try again or contact us directly at info@accelcq.com.',
       });
       
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
-      
-      // Reset success message after 8 seconds
+      // Reset error message after 8 seconds
       setTimeout(() => {
         setFormStatus({ type: null, message: '' });
       }, 8000);
-    }, 2000);
+    }
   };
 
   const inputClasses = (fieldName: string, hasError: boolean = false) => `
@@ -241,9 +273,9 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
                 onFocus={() => setFocusedField('subject')}
                 onBlur={() => setFocusedField(null)}
-                className={`${inputClasses('subject')} appearance-none cursor-pointer`}
+                className={`${inputClasses('subject')} appearance-none cursor-pointer pr-12`}
           >
-                <option value="">Select a subject</option>
+                <option value="" disabled></option>
             <option value="Confidential Computing">Confidential Computing</option>
             <option value="Quantum Computing">Quantum Computing</option>
                 <option value="Partnership">Partnership Opportunity</option>
@@ -256,8 +288,15 @@ const ContactForm: React.FC = () => {
               >
                 Subject
               </label>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none z-10">
+                <svg 
+                  className={`w-5 h-5 transition-colors duration-300 ${
+                    focusedField === 'subject' ? 'text-primary-500' : 'text-gray-400'
+                  }`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
         </div>
