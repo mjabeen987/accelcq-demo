@@ -25,7 +25,7 @@ const Footer = () => {
             <address className="not-italic text-gray-400">
               <div className="flex items-start space-x-2 mb-2">
                 <MapPin size={18} className="text-gray-500 mt-1 flex-shrink-0" />
-                <span>691 S Milpitas Boulevard, Ste 217<br />Milpitas, California 95035, United States</span>
+                <span>691 S Milpitas Blvd, STE 217<br />Milpitas, California 95035, United States</span>
               </div>
               <div className="flex items-center space-x-2 mb-2">
                 <Phone size={18} className="text-gray-500" />
