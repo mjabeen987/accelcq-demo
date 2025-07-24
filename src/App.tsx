@@ -25,6 +25,7 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const TEEFaq = lazy(() => import('./pages/TEEFaq'));
 const QuantumAlgorithmsFaq = lazy(() => import('./pages/QuantumAlgorithmsFaq'));
+const MemoryEncryptionFaq = lazy(() => import('./pages/MemoryEncryption'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -53,7 +54,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/faq/memory-encryption" element={<FAQ />} />
+            <Route path="/faq/memory-encryption" element={<MemoryEncryptionFaq />} />
             <Route path="/faq/trusted-execution-environments" element={<TEEFaq />} />
             <Route path="/faq/quantum-algorithms" element={<QuantumAlgorithmsFaq />} />
             <Route path="/contact" element={<Contact />} />

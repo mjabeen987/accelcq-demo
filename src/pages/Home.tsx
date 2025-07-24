@@ -52,7 +52,7 @@ const Home = () => {
       title: 'Enterprise Scalability',
       description: 'Production-ready solutions for any scale',
       details: 'From startups to Fortune 500 companies, our solutions scale seamlessly with your business needs.',
-      image: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      image: 'https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       icon: <Server size={24} />,
       color: 'accent'
     }
