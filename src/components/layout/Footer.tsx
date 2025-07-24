@@ -182,6 +182,7 @@ const Footer = () => {
                 </button>
               </div>
             </form>
+            {/* Social media icons hidden - no accounts yet
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
@@ -193,6 +194,7 @@ const Footer = () => {
                 <Github size={20} />
               </a>
             </div>
+            */}
           </div>
         </div>
         
