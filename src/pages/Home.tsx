@@ -135,13 +135,13 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-3 py-1 bg-primary-600 text-white rounded-full text-sm font-medium mb-5">
-              Leading the AI Infrastructure Revolution
+              Securing the AI Revolution
             </span>
             <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Secure Infrastructure for the <span className="text-primary-400">AI Era</span>
+              Accelerating Confidential & Quantum <span className="text-primary-400">Computing</span>
             </h1>
             <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
-              Accelerating development, deployment and adoption of Confidential & Quantum Computing
+              Addressing Security, Scale & Performance in the AI Era
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn btn-primary">
