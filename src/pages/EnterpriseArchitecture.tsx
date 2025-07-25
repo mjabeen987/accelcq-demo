@@ -164,7 +164,7 @@ const EnterpriseArchitecture = () => {
       <section className="section bg-gray-50">
         <div className="container-custom">
           <SectionHeading
-            title="Our Enterprise Architecture Technologies"
+            title="Our Enterprise Architecture Services"
             subtitle="Leveraging industry-leading frameworks and tools for comprehensive architecture development"
           />
           

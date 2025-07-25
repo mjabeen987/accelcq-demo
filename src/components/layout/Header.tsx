@@ -52,8 +52,8 @@ const Header = () => {
       name: 'Case Studies',
       path: '/case-studies',
       children: [
-        { name: 'Quantum Computing', path: '/case-studies/quantum-computing' },
         { name: 'Confidential Computing', path: '/case-studies/confidential-computing' },
+        { name: 'Quantum Computing', path: '/case-studies/quantum-computing' },
         { name: 'TOGAF Enterprise Architecture', path: '/case-studies/togaf-enterprise-architecture' },
       ],
     },

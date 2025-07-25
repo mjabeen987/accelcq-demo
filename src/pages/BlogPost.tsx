@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -854,6 +855,60 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find(post => post.slug === slug);
   
+  // Newsletter subscription state
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [subscriptionError, setSubscriptionError] = useState('');
+
+  // Handle newsletter subscription
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setSubscriptionError('Please enter a valid email address.');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubscriptionError('Please enter a valid email address.');
+      return;
+    }
+    
+    setIsLoading(true);
+    setSubscriptionError('');
+    
+    try {
+      const response = await fetch('https://hook.us2.make.com/hsscivzugsvrcbghpklvreyc661plkeu', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          source: 'BlogPost Newsletter Subscription',
+          timestamp: new Date().toISOString(),
+          page: 'blogpost',
+          article: post?.title || 'Unknown'
+        }),
+      });
+      
+      if (response.ok) {
+        setIsSubscribed(true);
+        setSubscriptionError('');
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      setSubscriptionError('Sorry, there was an error subscribing. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -1089,20 +1144,51 @@ const BlogPost = () => {
                   Stay updated with our latest insights on confidential and quantum computing.
                 </p>
                 
-                <form>
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    required
-                  />
-                  <button 
-                    type="submit" 
-                    className="w-full bg-primary-600 text-white px-4 py-2 rounded-md font-medium hover:bg-primary-700 transition-colors"
-                  >
-                    Subscribe
-                  </button>
-                </form>
+                {!isSubscribed ? (
+                  <>
+                    {subscriptionError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-md mb-3 text-sm">
+                        {subscriptionError}
+                      </div>
+                    )}
+                    
+                    <form onSubmit={handleSubscribe}>
+                      <input
+                        type="email"
+                        placeholder="Your email address"
+                        className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          setSubscriptionError('');
+                        }}
+                        disabled={isLoading}
+                        required
+                      />
+                      <button 
+                        type="submit" 
+                        className="w-full bg-primary-600 text-white px-4 py-2 rounded-md font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={isLoading}
+                      >
+                        {isLoading ? 'Subscribing...' : 'Subscribe'}
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md">
+                    <p className="font-medium">Thank you for subscribing!</p>
+                    <p className="text-sm">You'll receive our latest updates at {email}.</p>
+                    <button
+                      onClick={() => {
+                        setIsSubscribed(false);
+                        setEmail('');
+                      }}
+                      className="text-primary-600 hover:text-primary-700 font-medium transition-colors mt-2 text-sm"
+                    >
+                      Subscribe another email
+                    </button>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>

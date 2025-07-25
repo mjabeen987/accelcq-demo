@@ -90,7 +90,10 @@ const CaseStudyConfidentialComputing = () => {
                   <Play className="mr-2" size={18} />
                   View Live Demo
                 </a>
-                <Link to="/contact" className="btn btn-secondary">
+                <Link 
+                  to="/contact?subject=Confidential Computing&template=confidential-computing#contact-form" 
+                  className="btn btn-secondary"
+                >
                   Request Implementation
                 </Link>
               </div>
@@ -200,7 +203,10 @@ const CaseStudyConfidentialComputing = () => {
                 <ExternalLink className="mr-2" size={18} />
                 View Live Demo
               </a>
-              <Link to="/contact" className="btn bg-blue-500 text-white hover:bg-blue-400">
+              <Link 
+                to="/contact?subject=Confidential Computing&template=confidential-computing#contact-form" 
+                className="btn bg-blue-500 text-white hover:bg-blue-400"
+              >
                 Schedule Consultation
               </Link>
             </div>

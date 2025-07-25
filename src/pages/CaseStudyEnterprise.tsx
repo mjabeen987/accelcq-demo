@@ -52,7 +52,10 @@ const CaseStudyEnterprise = () => {
                   <Play className="mr-2" size={18} />
                   Demo Coming Soon
                 </button>
-                <Link to="/contact" className="btn btn-secondary">
+                <Link 
+                  to="/contact?subject=TOGAF Enterprise Architecture&template=enterprise-architecture#contact-form" 
+                  className="btn btn-secondary"
+                >
                   Request Assessment
                 </Link>
               </div>
@@ -122,12 +125,17 @@ const CaseStudyEnterprise = () => {
               Experience the power of TOGAF-based enterprise architecture with our Financial Exchange Platform demo. See how proper architecture governance can transform your organization's capabilities.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn bg-white text-gray-400 opacity-50 cursor-not-allowed" disabled>
-                <ExternalLink className="mr-2" size={18} />
-                Demo Coming Soon
-              </button>
-              <Link to="/contact" className="btn bg-green-500 text-white hover:bg-green-400">
-                Schedule Architecture Review
+              <Link 
+                to="/contact?subject=TOGAF Enterprise Architecture&template=enterprise-architecture#contact-form" 
+                className="btn bg-white text-green-600 hover:bg-gray-50"
+              >
+                Schedule a Consultation
+              </Link>
+              <Link 
+                to="/contact?subject=TOGAF Enterprise Architecture&template=enterprise-architecture#contact-form" 
+                className="btn bg-green-500 text-white hover:bg-green-400"
+              >
+                Contact Us
               </Link>
             </div>
           </motion.div>

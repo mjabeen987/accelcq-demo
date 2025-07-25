@@ -1,8 +1,60 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [subscriptionError, setSubscriptionError] = useState('');
+
+  // Handle newsletter subscription
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setSubscriptionError('Please enter a valid email address.');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubscriptionError('Please enter a valid email address.');
+      return;
+    }
+    
+    setIsLoading(true);
+    setSubscriptionError('');
+    
+    try {
+      const response = await fetch('https://hook.us2.make.com/hsscivzugsvrcbghpklvreyc661plkeu', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          source: 'Footer Newsletter Subscription',
+          timestamp: new Date().toISOString(),
+          page: 'footer'
+        }),
+      });
+      
+      if (response.ok) {
+        setIsSubscribed(true);
+        setSubscriptionError('');
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      setSubscriptionError('Sorry, there was an error subscribing. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
   
   return (
     <footer className="bg-gray-900 text-white">
@@ -176,22 +228,44 @@ const Footer = () => {
             <p className="text-gray-400 mb-4">
               Subscribe to our newsletter for the latest updates on confidential and quantum computing.
             </p>
-            <form className="mb-4">
-              <div className="flex flex-col space-y-2">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="px-3 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-1 focus:ring-primary-500 text-sm"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  className="bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md transition-colors text-sm"
-                >
-                  Subscribe
-                </button>
+            
+            {!isSubscribed ? (
+              <>
+                {subscriptionError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-md mb-3 text-sm">
+                    {subscriptionError}
+                  </div>
+                )}
+                
+                <form onSubmit={handleSubscribe} className="mb-4">
+                  <div className="flex flex-col space-y-2">
+                    <input
+                      type="email"
+                      placeholder="Your email"
+                      className="px-3 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-1 focus:ring-primary-500 text-sm"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setSubscriptionError('');
+                      }}
+                      disabled={isLoading}
+                      required
+                    />
+                    <button 
+                      type="submit" 
+                      className="bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? 'Subscribing...' : 'Subscribe'}
+                    </button>
+                  </div>
+                </form>
+              </>
+            ) : (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-md mb-4 text-sm">
+                <p className="font-medium">Thank you for subscribing!</p>
               </div>
-            </form>
+            )}
             {/* Social media icons hidden - no accounts yet
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors" aria-label="LinkedIn">

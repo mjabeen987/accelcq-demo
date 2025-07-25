@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  prefilledSubject?: string;
+  prefilledMessage?: string;
+}
+
+const ContactForm: React.FC<ContactFormProps> = (props) => {
+  const { prefilledSubject = '', prefilledMessage = '' } = props;
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    subject: '',
-    message: '',
+    subject: prefilledSubject,
+    message: prefilledMessage,
   });
+
+  // Update form data when prefilled values change
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      subject: prefilledSubject,
+      message: prefilledMessage,
+    }));
+  }, [prefilledSubject, prefilledMessage]);
   
   const [formStatus, setFormStatus] = useState<{
     type: 'success' | 'error' | 'loading' | null;
@@ -278,6 +294,7 @@ const ContactForm: React.FC = () => {
                 <option value="" disabled></option>
             <option value="Confidential Computing">Confidential Computing</option>
             <option value="Quantum Computing">Quantum Computing</option>
+            <option value="TOGAF Enterprise Architecture">TOGAF Enterprise Architecture</option>
                 <option value="Partnership">Partnership Opportunity</option>
             <option value="General Inquiry">General Inquiry</option>
                 <option value="Technical Support">Technical Support</option>

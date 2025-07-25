@@ -92,6 +92,8 @@ const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [subscriptionError, setSubscriptionError] = useState('');
   
   // Get unique categories
   const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
@@ -105,10 +107,49 @@ const Blog = () => {
   });
 
   // Handle newsletter subscription
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setIsSubscribed(true);
+    
+    if (!email.trim()) {
+      setSubscriptionError('Please enter a valid email address.');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubscriptionError('Please enter a valid email address.');
+      return;
+    }
+    
+    setIsLoading(true);
+    setSubscriptionError('');
+    
+    try {
+      const response = await fetch('https://hook.us2.make.com/hsscivzugsvrcbghpklvreyc661plkeu', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          source: 'Blog Newsletter Subscription',
+          timestamp: new Date().toISOString(),
+          page: 'blog'
+        }),
+      });
+      
+      if (response.ok) {
+        setIsSubscribed(true);
+        setSubscriptionError('');
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      setSubscriptionError('Sorry, there was an error subscribing. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -209,20 +250,31 @@ const Blog = () => {
                     Subscribe to our newsletter to receive the latest insights and updates on confidential computing and quantum technologies.
                   </p>
                   
+                  {subscriptionError && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4 max-w-md mx-auto">
+                      {subscriptionError}
+                    </div>
+                  )}
+                  
                   <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                     <input
                       type="email"
                       placeholder="Your email address"
                       className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setSubscriptionError('');
+                      }}
+                      disabled={isLoading}
                       required
                     />
                     <button 
                       type="submit" 
-                      className="bg-primary-600 text-white px-6 py-3 rounded-md font-medium hover:bg-primary-700 transition-colors"
+                      className="bg-primary-600 text-white px-6 py-3 rounded-md font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isLoading}
                     >
-                      Subscribe
+                      {isLoading ? 'Subscribing...' : 'Subscribe'}
                     </button>
                   </form>
                   

@@ -15,7 +15,7 @@ const Services = () => {
     {
       title: 'Confidential Computing',
       description: 'Protect your most sensitive data during processing with hardware-based isolation and encryption. Secure computation in untrusted environments.',
-      specialization: 'Data Protection in Use',
+      specialization: 'Data Protection during processing',
       icon: <Shield size={32} />,
       link: '/services/confidential-computing',
       image: 'https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -25,7 +25,7 @@ const Services = () => {
     {
       title: 'Quantum Computing',
       description: 'Harness quantum mechanics to solve complex computational problems beyond classical capabilities. Custom quantum algorithm development.',
-      specialization: 'Advanced Computation',
+      specialization: 'Advanced Fastest Computation',
       icon: <Cpu size={32} />,
       link: '/services/quantum-computing',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -35,10 +35,10 @@ const Services = () => {
     {
       title: 'Enterprise Architecture',
       description: 'Design and implement comprehensive enterprise architectures using TOGAF 10, Sparx EA, and custom automation scripts.',
-      specialization: 'Strategic Planning',
+      specialization: 'TOGAF Enterprise Architecture',
       icon: <Building size={32} />,
       link: '/services/enterprise-architecture',
-      image: 'https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       color: 'bg-green-50 border-green-100',
       iconColor: 'text-green-600'
     }
@@ -76,7 +76,7 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                   <div className="relative h-48 overflow-hidden">
                     <img 
                       src={service.image} 
@@ -91,7 +91,7 @@ const Services = () => {
                     </div>
                   </div>
                   
-                  <div className="p-6 flex flex-col h-full">
+                  <div className="p-6 flex flex-col flex-grow">
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg mb-4 ${service.color}`}>
                       <div className={service.iconColor}>
                         {service.icon}
@@ -103,7 +103,7 @@ const Services = () => {
                     
                     <Link 
                       to={service.link}
-                      className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors group-hover:translate-x-1 duration-300"
+                      className="inline-flex items-center text-primary-600 font-medium"
                     >
                       Learn More
                       <ArrowRight size={16} className="ml-1" />

@@ -1,9 +1,64 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Mail, Phone, MapPin, Clock, MessageCircle, Calendar, Users, ArrowRight, ExternalLink, CheckCircle } from 'lucide-react';
 import ContactForm from '../components/common/ContactForm';
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
+  
+  // Get prefill values from URL parameters
+  const prefilledSubject = searchParams.get('subject') || '';
+  const messageTemplate = searchParams.get('template') || '';
+  
+  // Generate prefilled message based on template
+  const getPrefilledMessage = (template: string) => {
+    switch (template) {
+      case 'confidential-computing':
+        return `Hi,
+
+My Name is [Your name], I'm working as [position] in [company], my number is +1(xxx)-xxx-xxxx based out of xxxxxx.
+
+I am interested in the Confidential Computing implementation demo. Can I know your availability for an implementation demo?
+
+Regards
+[Your name]`;
+      case 'quantum-computing':
+        return `Hi,
+
+My Name is [Your name], I'm working as [position] in [company], my number is +1(xxx)-xxx-xxxx based out of xxxxxx.
+
+I am interested in the Quantum Computing implementation demo. Can I know your availability for an implementation demo?
+
+Regards
+[Your name]`;
+      case 'enterprise-architecture':
+        return `Hi,
+
+My Name is [Your name], I'm working as [position] in [company], my number is +1(xxx)-xxx-xxxx based out of xxxxxx.
+
+I am interested in the TOGAF Enterprise Architecture assessment. Can I know your availability for an architecture review?
+
+Regards
+[Your name]`;
+      default:
+        return '';
+    }
+  };
+
+  // Auto-scroll to contact form if prefilled parameters are present
+  useEffect(() => {
+    if (prefilledSubject || messageTemplate) {
+      setTimeout(() => {
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100); // Small delay to ensure page has loaded
+    }
+  }, [prefilledSubject, messageTemplate]);
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -27,8 +82,8 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | AccelCQ Inc</title>
-        <meta name="description" content="Get in touch with AccelCQ Inc for confidential computing and quantum computing solutions. Contact our team for consultations and inquiries." />
+        <title>Contact Us | AccelCQ LLC</title>
+        <meta name="description" content="Get in touch with AccelCQ for confidential computing and quantum computing solutions. Contact our team for consultations and inquiries." />
       </Helmet>
 
       {/* Modern Hero Section */}
@@ -72,7 +127,7 @@ const Contact = () => {
                 Call Now
               </motion.a>
               <motion.a 
-                href="mailto:info@accelcq.com"
+                href="mailto:info@accelcq.com?subject=Inquiry%20from%20xxx%20for%20Confidential%2FQuantum%20computing%2FEnterprise%20Architecture&body=Hi%0A%0AMy%20Name%20is%20....%2C%20I%27m%20working%20as%20%5Bposition%5D%20in%20%5Bcompany%5D%2C%20my%20number%20is%20%2B1%28xxx%29-xxx-xxxx%20based%20out%20of%20xxxxxx%0A%0AI%20am%20inquiring%20about%20....%0A%0ARegards%0AYour%20name"
                 variants={fadeIn}
                 className="group flex items-center px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full font-semibold hover:from-accent-600 hover:to-accent-700 transition-all duration-300 transform hover:scale-105 shadow-xl"
               >
@@ -117,7 +172,7 @@ const Contact = () => {
                 title: "Email Us",
                 value: "info@accelcq.com",
                 subtitle: "We'll respond within 24h",
-                href: "mailto:info@accelcq.com",
+                href: "mailto:info@accelcq.com?subject=Inquiry%20from%20xxx%20for%20Confidential%2FQuantum%20computing%2FEnterprise%20Architecture&body=Hi%0A%0AMy%20Name%20is%20....%2C%20I%27m%20working%20as%20%5Bposition%5D%20in%20%5Bcompany%5D%2C%20my%20number%20is%20%2B1%28xxx%29-xxx-xxxx%20based%20out%20of%20xxxxxx%0A%0AI%20am%20inquiring%20about%20....%0A%0ARegards%0AYour%20name",
                 gradient: "from-emerald-500 to-emerald-600",
                 bgGradient: "from-emerald-50 to-emerald-100"
               },
@@ -226,7 +281,10 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
               <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
-                <ContactForm />
+                <ContactForm 
+                  prefilledSubject={prefilledSubject}
+                  prefilledMessage={getPrefilledMessage(messageTemplate)}
+                />
               </div>
             </motion.div>
           </div>
@@ -262,7 +320,7 @@ const Contact = () => {
                 allowFullScreen 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="AccelCQ Inc Office Location"
+                title="AccelCQ LLC Office Location"
                   className="w-full h-96 md:h-[500px]"
               ></iframe>
               </div>
@@ -280,7 +338,7 @@ const Contact = () => {
                     <MapPin size={20} className="text-white" />
                   </div>
                   <div>
-                                         <h3 className="font-semibold text-gray-900 mb-1">AccelCQ Inc</h3>
+                                         <h3 className="font-semibold text-gray-900 mb-1">AccelCQ LLC</h3>
                     <address className="not-italic text-gray-600 text-sm leading-relaxed">
                       691 S Milpitas Boulevard, Ste 217<br />
                       Milpitas, California 95035<br />
