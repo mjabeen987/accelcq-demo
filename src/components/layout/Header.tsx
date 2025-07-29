@@ -8,6 +8,10 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
+  // Check if we're on a case study page
+  const isCaseStudyPage = location.pathname.startsWith('/case-study/enterprise-architecture') ||
+                          location.pathname === '/case-studies/togaf-enterprise-architecture';
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
   const toggleDropdown = (dropdownName: string) => {
@@ -99,7 +103,7 @@ const Header = () => {
                       `flex items-center font-medium transition-colors duration-300 ${
                         isActive 
                           ? 'text-primary-600' 
-                          : isScrolled 
+                          : isScrolled || isCaseStudyPage
                             ? 'text-gray-700 hover:text-primary-600' 
                             : 'text-white hover:text-primary-300'
                       }`
@@ -111,7 +115,7 @@ const Header = () => {
                 ) : (
                   <button
                     className={`flex items-center font-medium transition-colors duration-300 ${
-                      isScrolled 
+                      isScrolled || isCaseStudyPage
                         ? 'text-gray-700 hover:text-primary-600' 
                         : 'text-white hover:text-primary-300'
                     }`}
@@ -179,7 +183,7 @@ const Header = () => {
                   `font-medium transition-colors duration-300 ${
                     isActive 
                       ? 'text-primary-600' 
-                      : isScrolled 
+                      : isScrolled || isCaseStudyPage
                         ? 'text-gray-700 hover:text-primary-600' 
                         : 'text-white hover:text-primary-300'
                   }`
@@ -194,7 +198,7 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           className={`md:hidden focus:outline-none transition-colors duration-300 ${
-            isScrolled ? 'text-gray-700' : 'text-white'
+            isScrolled || isCaseStudyPage ? 'text-gray-700' : 'text-white'
           }`}
           onClick={toggleMenu}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}

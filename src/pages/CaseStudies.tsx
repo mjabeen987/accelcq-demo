@@ -35,7 +35,7 @@ const CaseStudies = () => {
     {
       title: 'TOGAF Enterprise Architecture',
       description: 'Experience our Financial Exchange Platform demo showcasing enterprise-grade architecture patterns and best practices in action.',
-      demo: 'Financial Exchange Platform',
+      demo: 'OnEdge AI Intelligence Service',
       icon: <Building size={32} />,
       link: '/case-studies/togaf-enterprise-architecture',
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',

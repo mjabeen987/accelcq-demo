@@ -1,13 +1,18 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscriptionError, setSubscriptionError] = useState('');
+
+  // Check if we're on a case study page
+  const isCaseStudyPage = location.pathname.startsWith('/case-study/enterprise-architecture') || 
+                          location.pathname === '/case-studies/togaf-enterprise-architecture';
 
   // Handle newsletter subscription
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -57,7 +62,7 @@ const Footer = () => {
   };
   
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className={`bg-gray-900 text-white ${isCaseStudyPage ? 'ml-80' : ''}`}>
       <div className="container-custom pt-6 pb-12 md:pt-8 md:pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Company Info */}

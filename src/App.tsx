@@ -29,6 +29,16 @@ const MemoryEncryptionFaq = lazy(() => import('./pages/MemoryEncryption'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+// Case Study Phase Components (without layout)
+const PhaseA = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseA'));
+const PhaseB = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseB'));
+const PhaseC = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseC'));
+const PhaseD = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseD'));
+const PhaseE = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseE'));
+const PhaseF = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseF'));
+const PhaseG = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseG'));
+const PhaseH = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseH'));
+
 function App() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -51,6 +61,17 @@ function App() {
             <Route path="/case-studies/confidential-computing" element={<CaseStudyConfidentialComputing />} />
             <Route path="/case-studies/quantum-computing" element={<CaseStudyQuantum />} />
             <Route path="/case-studies/togaf-enterprise-architecture" element={<CaseStudyEnterprise />} />
+            
+            {/* Case Study Phase Pages (without case study header/footer) */}
+            <Route path="/case-study/enterprise-architecture/phase-a" element={<PhaseA />} />
+            <Route path="/case-study/enterprise-architecture/phase-b" element={<PhaseB />} />
+            <Route path="/case-study/enterprise-architecture/phase-c" element={<PhaseC />} />
+            <Route path="/case-study/enterprise-architecture/phase-d" element={<PhaseD />} />
+            <Route path="/case-study/enterprise-architecture/phase-e" element={<PhaseE />} />
+            <Route path="/case-study/enterprise-architecture/phase-f" element={<PhaseF />} />
+            <Route path="/case-study/enterprise-architecture/phase-g" element={<PhaseG />} />
+            <Route path="/case-study/enterprise-architecture/phase-h" element={<PhaseH />} />
+            
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
