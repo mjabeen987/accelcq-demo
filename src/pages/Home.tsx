@@ -147,7 +147,7 @@ const Home = () => {
               <Link to="/contact" className="btn btn-primary">
                 Get Started
               </Link>
-              <Link to="/services/confidential-computing" className="btn btn-secondary">
+              <Link to="/services" className="btn btn-secondary">
                 Explore Solutions
               </Link>
             </div>
