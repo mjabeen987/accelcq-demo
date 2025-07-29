@@ -203,7 +203,7 @@ const EnterpriseArchitecture = () => {
       <section id="togaf-10" className="section">
         <div className="container-custom">
           <SectionHeading
-            title="TOGAF 10 Implementation"
+            title="About TOGAF 10"
             subtitle="Complete enterprise architecture development using The Open Group Architecture Framework"
           />
           
