@@ -13,8 +13,10 @@ const SecureEnclave = lazy(() => import('./pages/SecureEnclave'));
 const MemoryEncryption = lazy(() => import('./pages/MemoryEncryption'));
 const PrivacyPreservingComputation = lazy(() => import('./pages/PrivacyPreservingComputation'));
 const QuantumComputing = lazy(() => import('./pages/QuantumComputing'));
+const EnterpriseArchitecture = lazy(() => import('./pages/EnterpriseArchitecture'));
 const TEEAsAService = lazy(() => import('./pages/TEEAsAService'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
+const Services = lazy(() => import('./pages/Services'));
 const CaseStudyConfidentialComputing = lazy(() => import('./pages/CaseStudyConfidentialComputing'));
 const CaseStudyQuantum = lazy(() => import('./pages/CaseStudyQuantum'));
 const CaseStudyEnterprise = lazy(() => import('./pages/CaseStudyEnterprise'));
@@ -23,8 +25,19 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const TEEFaq = lazy(() => import('./pages/TEEFaq'));
 const QuantumAlgorithmsFaq = lazy(() => import('./pages/QuantumAlgorithmsFaq'));
+const MemoryEncryptionFaq = lazy(() => import('./pages/MemoryEncryption'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+// Case Study Phase Components (without layout)
+const PhaseA = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseA'));
+const PhaseB = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseB'));
+const PhaseC = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseC'));
+const PhaseD = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseD'));
+const PhaseE = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseE'));
+const PhaseF = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseF'));
+const PhaseG = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseG'));
+const PhaseH = lazy(() => import('./pages/case-study/enterprise-architecture/phases/PhaseH'));
 
 function App() {
   return (
@@ -40,16 +53,29 @@ function App() {
             <Route path="/services/secure-enclave" element={<SecureEnclave />} />
             <Route path="/services/confidential-computing/memory-encryption" element={<MemoryEncryption />} />
             <Route path="/services/confidential-computing/privacy-preserving-computation" element={<PrivacyPreservingComputation />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/services/quantum-computing" element={<QuantumComputing />} />
+            <Route path="/services/enterprise-architecture" element={<EnterpriseArchitecture />} />
             <Route path="/services/tee-as-a-service" element={<TEEAsAService />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/confidential-computing" element={<CaseStudyConfidentialComputing />} />
             <Route path="/case-studies/quantum-computing" element={<CaseStudyQuantum />} />
             <Route path="/case-studies/togaf-enterprise-architecture" element={<CaseStudyEnterprise />} />
+            
+            {/* Case Study Phase Pages (without case study header/footer) */}
+            <Route path="/case-study/enterprise-architecture/phase-a" element={<PhaseA />} />
+            <Route path="/case-study/enterprise-architecture/phase-b" element={<PhaseB />} />
+            <Route path="/case-study/enterprise-architecture/phase-c" element={<PhaseC />} />
+            <Route path="/case-study/enterprise-architecture/phase-d" element={<PhaseD />} />
+            <Route path="/case-study/enterprise-architecture/phase-e" element={<PhaseE />} />
+            <Route path="/case-study/enterprise-architecture/phase-f" element={<PhaseF />} />
+            <Route path="/case-study/enterprise-architecture/phase-g" element={<PhaseG />} />
+            <Route path="/case-study/enterprise-architecture/phase-h" element={<PhaseH />} />
+            
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/faq/memory-encryption" element={<FAQ />} />
+            <Route path="/faq/memory-encryption" element={<MemoryEncryptionFaq />} />
             <Route path="/faq/trusted-execution-environments" element={<TEEFaq />} />
             <Route path="/faq/quantum-algorithms" element={<QuantumAlgorithmsFaq />} />
             <Route path="/contact" element={<Contact />} />

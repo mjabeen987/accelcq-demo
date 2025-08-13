@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Shield, Cpu, Server, BarChart, Code, Globe, Users, ArrowRight, ChevronLeft, ChevronRight, Star, CheckCircle, Zap } from 'lucide-react';
+import { Shield, Cpu, Server, BarChart, Code, Globe, Users, ArrowRight, ChevronLeft, ChevronRight, CheckCircle, Zap } from 'lucide-react';
 import SectionHeading from '../components/common/SectionHeading';
 import ServiceCard from '../components/common/ServiceCard';
 
@@ -52,7 +52,7 @@ const Home = () => {
       title: 'Enterprise Scalability',
       description: 'Production-ready solutions for any scale',
       details: 'From startups to Fortune 500 companies, our solutions scale seamlessly with your business needs.',
-      image: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      image: 'https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       icon: <Server size={24} />,
       color: 'accent'
     }
@@ -128,47 +128,31 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
         </div>
 
-        <div className="container-custom relative z-10 pt-20 lg:pt-0">
-          <div className="flex flex-col items-center justify-center min-h-[60vh]">
-            {/* Content */}
-            <motion.div 
-              className="text-center w-full"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-6 border border-white/20"
-              >
-                <Star size={16} className="mr-2 text-primary-300" />
-                Leading the AI Infrastructure Revolution
-              </motion.div>
-              
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight mb-8 text-white drop-shadow-xl">
-                Secure Infrastructure<br />
-                <span>
-                  for the <span className="gradient-text bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">AI Era</span>
-                </span>
-              </h1>
-              
-              <p className="text-2xl md:text-3xl text-secondary-200 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Accelerating development, deployment and adoption of Confidential & Quantum Computing
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="btn btn-primary text-lg px-8 py-4">
-                  Get Started
-                  <ArrowRight size={20} className="ml-2" />
-                </Link>
-                <Link to="/services/confidential-computing" className="btn btn-ghost text-lg px-8 py-4 text-white border-white/20 hover:bg-white/10">
-                  Explore Solutions
-                </Link>
-              </div>
-            </motion.div>
-          </div>
+        <div className="container-custom relative z-10 pt-28 md:pt-0">
+          <motion.div 
+            className="max-w-3xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block px-3 py-1 bg-primary-600 text-white rounded-full text-sm font-medium mb-5">
+              Securing the AI Revolution
+            </span>
+            <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              Accelerating Confidential & Quantum <span className="text-primary-400">Computing</span>
+            </h1>
+            <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
+              Addressing Security, Scale & Performance in the AI Era
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/contact" className="btn btn-primary">
+                Get Started
+              </Link>
+              <Link to="/services" className="btn btn-secondary">
+                Explore Solutions
+              </Link>
+            </div>
+          </motion.div>
         </div>
         
         {/* Scroll Indicator */}
@@ -241,7 +225,7 @@ const Home = () => {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <ServiceCard {...service} />
+                <ServiceCard {...service} showLearnMore={false} />
               </motion.div>
             ))}
           </motion.div>

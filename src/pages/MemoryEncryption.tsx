@@ -1,105 +1,273 @@
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
+import { ChevronDown, HelpCircle, Shield, Lock, Server, CheckCircle, ArrowRight } from 'lucide-react';
 import PageHeader from '../components/common/PageHeader';
 import SectionHeading from '../components/common/SectionHeading';
-import { Shield, Lock, Cloud, CheckCircle, ArrowRight, Eye, Server } from 'lucide-react';
 
-const MemoryEncryption = () => {
-  const services = [
+const services = [
+  {
+    title: "Cloud Memory Encryption",
+    description: [
+      "Hardware-backed memory encryption for major cloud providers",
+      "Secure key management and attestation",
+      "Performance optimization and monitoring",
+      "Compliance reporting and audit support"
+    ]
+  },
+  {
+    title: "On-Premises TEE Integration",
+    description: [
+      "Intel SGX and AMD SEV implementation",
+      "Hardware security module integration",
+      "Custom attestation solutions",
+      "Hybrid cloud memory protection"
+    ]
+  }
+];
+
+const technologies = [
+  "Intel SGX (Software Guard Extensions)",
+  "AMD SEV (Secure Encrypted Virtualization)",
+  "AWS Nitro Enclaves",
+  "Azure Confidential Computing",
+  "Google Cloud Confidential Computing",
+  "IBM Cloud Data Shield",
+  "ARM TrustZone Technology",
+  "Custom TEE Solutions"
+];
+
+const benefits = [
+  "End-to-end memory protection across cloud and on-premises environments",
+  "Expert implementation and optimization of hardware-backed security",
+  "Continuous compliance monitoring and reporting",
+  "24/7 dedicated support and incident response",
+  "Integration with existing security infrastructure",
+  "Regular security assessments and updates",
+  "Cost-effective scaling of secure workloads",
+  "Future-proof architecture design"
+];
+
+const MemoryEncryptionFaq = () => {
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+
+  const toggleQuestion = (questionId: string) => {
+    setOpenQuestion(openQuestion === questionId ? null : questionId);
+  };
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const faqQuestions = [
     {
-      title: "End-to-End Memory Encryption Deployment",
-      description: [
-        "Enable and optimize hardware-level memory encryption on cloud platforms including Azure Confidential VMs (AMD SEV, Intel TDX), AWS Nitro Enclaves, Google Confidential VMs, and IBM Hyper Protect.",
-        "Protect against advanced threats: Ensure data remains secure even if memory is physically accessed or dumped by a malicious actor."
-      ]
+      id: "expertise-beyond-setup",
+      question: "1. Expertise Beyond Basic Setup",
+      icon: <Shield size={20} />,
+      content: (
+        <div className="space-y-6">
+          <p className="text-gray-700 leading-relaxed">
+            Even if your internal cloud team is skilled, implementing memory encryption in confidential computing 
+            is rarely a simple "set-and-forget" task. AccelCQ delivers:
+          </p>
+          
+          <div className="space-y-4">
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Depth of Experience</h4>
+              <p className="text-gray-700 leading-relaxed">
+              We specialize in hardware-backed memory encryption across all major clouds (Azure, AWS, Google, IBM) 
+              and on-premises TEEs (Intel SGX, AMD SEV, etc.), so we anticipate and avoid pitfalls, performance 
+              regressions, and misconfigurations that in-house teams may overlook.
+            </p>
+          </div>
+            
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">End-to-End Security</h4>
+            <p className="text-gray-700 leading-relaxed">
+              Encryption is just the foundation—secure attestation, monitoring, audit logging, and lifecycle key 
+              management are essential for ongoing protection and compliance.
+            </p>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      title: "Secure Enclave Integration",
-      description: [
-        "Deploy applications within secure enclaves (e.g., Intel SGX, AMD SEV, ARM TrustZone), automatically benefiting from encrypted memory regions managed by the CPU.",
-        "Use enclave technology from all leading providers to guarantee the confidentiality and integrity of in-memory data."
-      ]
+      id: "compliance-risk-management",
+      question: "2. Ongoing Compliance & Risk Management",
+      icon: <CheckCircle size={20} />,
+      content: (
+        <div className="space-y-6">
+          <p className="text-gray-700 leading-relaxed">
+            For regulated industries (healthcare, finance, biotech, etc.), compliance is a moving target. AccelCQ provides:
+          </p>
+          
+          <div className="space-y-4">
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Continuous Compliance Alignment</h4>
+              <p className="text-gray-700 leading-relaxed">
+                Automated checks, reporting, and attestation tailored to HIPAA, GDPR, PCI, and more—so audits and 
+              certifications don't disrupt your business.
+            </p>
+          </div>
+            
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Rapid Response</h4>
+            <p className="text-gray-700 leading-relaxed">
+              Proactive monitoring and threat detection—especially important as attacks evolve or new vulnerabilities 
+              are discovered.
+            </p>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      title: "Compliance & Audit-Ready Security",
-      description: [
-        "Automate the deployment of memory encryption to meet HIPAA, GDPR, PCI-DSS, and financial industry compliance standards.",
-        "Provide audit trails and real-time verification of encrypted memory status for regulatory and internal assurance."
-      ]
+      id: "operational-excellence",
+      question: "3. Operational Excellence & Future-Proofing",
+      icon: <Server size={20} />,
+      content: (
+        <div className="space-y-6">
+          <div className="space-y-4">
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Seamless Integration</h4>
+              <p className="text-gray-700 leading-relaxed">
+              We help you optimize memory encryption for real-world workloads—balancing security, performance, and cost, 
+              whether you're cloud-native or hybrid.
+            </p>
+          </div>
+            
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Feature Evolution</h4>
+            <p className="text-gray-700 leading-relaxed">
+              Even if the initial job seems "one-off," security and compliance requirements rarely stay static. AccelCQ 
+              keeps you ahead of new cloud features (like confidential containers or next-gen TEEs) and regulatory 
+              changes—future-proofing your investment.
+            </p>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      title: "Advanced Protection for AI/ML & Data Analytics",
-      description: [
-        "Enable secure, encrypted processing for AI training, data analytics, and sensitive workloads.",
-        "Prevent leakage of intellectual property and confidential data during real-time inference or analytics."
-      ]
+      id: "specialized-scenarios",
+      question: "4. Specialized Scenarios",
+      icon: <Lock size={20} />,
+      content: (
+        <div className="space-y-6">
+          <div className="space-y-4">
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">On-Premises and Hybrid Cloud</h4>
+              <p className="text-gray-700 leading-relaxed">
+              For organizations running confidential workloads in private data centers or hybrid clouds, AccelCQ 
+              delivers the same level of expertise, integrating TEEs (Intel SGX, AMD SEV, ARM TrustZone) and memory 
+              encryption solutions without relying on public cloud infrastructure.
+            </p>
+          </div>
+            
+          <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Complex Multi-Cloud Deployments</h4>
+            <p className="text-gray-700 leading-relaxed">
+              Coordinating consistent security posture and memory encryption across multiple clouds and/or on-prem 
+              environments can be challenging—we make it seamless.
+            </p>
+          </div>
+          </div>
+        </div>
+      )
     },
     {
-      title: "Secure Key Management Integration",
-      description: [
-        "Deploy and manage cryptographic keys for memory encryption using cloud-native or custom key management systems.",
-        "Integrate with Azure Key Vault, AWS KMS, Google Cloud KMS, and IBM Key Protect for robust lifecycle management."
-      ]
-    },
-    {
-      title: "Consulting & Optimization",
-      description: [
-        "Assess your workloads for memory encryption readiness and compatibility across multiple cloud and on-premise environments.",
-        "Optimize performance and cost for encrypted workloads, leveraging latest CPU and enclave technologies."
-      ]
-    },
-    {
-      title: "Continuous Monitoring & Support",
-      description: [
-        "24/7 monitoring of memory encryption status and threat detection.",
-        "Ongoing patching, attestation, and rapid response in the event of a security anomaly."
-      ]
+      id: "independent-assurance",
+      question: "5. Independent Assurance & Support",
+      icon: <HelpCircle size={20} />,
+      content: (
+        <div className="space-y-6">
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Third-Party Validation</h4>
+              <p className="text-gray-700 leading-relaxed">
+                AccelCQ provides unbiased security reviews and documentation, offering assurance for your customers, 
+                partners, or regulators.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Dedicated Support</h4>
+              <p className="text-gray-700 leading-relaxed">
+                24/7 expertise for incident response, upgrades, and troubleshooting—beyond the scope of most internal teams.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
     }
   ];
 
-  const technologies = [
-    "Microsoft Azure: Confidential VMs (AMD SEV-SNP, Intel TDX), Confidential Containers",
-    "AWS: Nitro Enclaves, EC2 Nitro memory encryption",
-    "Google Cloud: Confidential VMs (AMD SEV)",
-    "IBM Cloud: Hyper Protect Virtual Servers (hardware memory protection)",
-    "Intel SGX, AMD SEV, ARM TrustZone",
-    "Fortanix, OpenEnclave, and other TEE technologies"
-  ];
-
-  const benefits = [
-    "Cross-Platform Expertise: Deep experience with all leading cloud providers and memory encryption standards.",
-    "Turnkey Solutions: Rapid assessment, deployment, and management for seamless integration.",
-    "End-to-End Protection: Memory encryption, secure enclaves, and key management—all in one trusted solution.",
-    "Proven Results: Successful deployments in highly regulated industries like healthcare, finance, and biotech."
+  const targetCustomers = [
+    {
+      title: "Regulated Enterprises",
+      description: "Healthcare, finance, pharma, and biotech firms requiring strong, auditable security.",
+      icon: <Shield size={20} />
+    },
+    {
+      title: "Data-Centric Businesses", 
+      description: "Companies processing highly sensitive IP, customer, or financial data in cloud or hybrid environments.",
+      icon: <Lock size={20} />
+    },
+    {
+      title: "Organizations Facing Rapid Growth or Change",
+      description: "When in-house teams are stretched, or the security/compliance landscape evolves faster than they can keep up.",
+      icon: <Server size={20} />
+    },
+    {
+      title: "Those Seeking Proactive, Not Reactive, Security",
+      description: "Clients who see memory encryption as part of a holistic, evolving data protection strategy—not a one-off checkbox.",
+      icon: <CheckCircle size={20} />
+    }
   ];
 
   return (
-    <div className="min-h-screen">
-      <PageHeader
-        title="Memory Encryption Services"
-        subtitle="Advanced Memory Encryption solutions to protect sensitive data in use—right where it lives in memory"
-        backgroundImage="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&h=1020&q=80"
+    <>
+      <Helmet>
+        <title>Memory Encryption FAQ | AccelCQ Inc</title>
+        <meta name="description" content="Frequently asked questions about AccelCQ's memory encryption services. Learn why AccelCQ is the right choice for your confidential computing and memory encryption needs." />
+      </Helmet>
+
+      <PageHeader 
+        title="Memory Encryption FAQ"
+        subtitle="Why Choose AccelCQ for Memory Encryption?"
+        backgroundImage="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&h=1020&q=80"
       />
 
-      {/* Introduction */}
+      {/* Main FAQ Section */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              AccelCQ brings the next layer of cloud security to your business with advanced Memory Encryption solutions. 
-              Protect sensitive data in use—right where it lives in memory—with hardware-backed encryption and secure 
-              enclave technologies from all major U.S. cloud providers.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What Is Memory Encryption */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            transition={{ duration: 0.6 }}
+          >
           <SectionHeading
-            title="What Is Memory Encryption?"
-            subtitle=""
+              title="Why Choose AccelCQ for Memory Encryption?"
+              subtitle="Even if you have a cloud team, here's why AccelCQ delivers specialized expertise for both cloud and on-premises scenarios"
             alignment="center"
           />
+          </motion.div>
+          
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg p-8">
               <div className="flex items-start space-x-4">
@@ -216,8 +384,8 @@ const MemoryEncryption = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
-export default MemoryEncryption; 
+export default MemoryEncryptionFaq; 

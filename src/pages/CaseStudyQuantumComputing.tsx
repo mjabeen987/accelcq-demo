@@ -93,7 +93,10 @@ const CaseStudyQuantumComputing = () => {
                   <Play className="mr-2" size={18} />
                   Launch Quantum Demo
                 </button>
-                <Link to="/contact" className="btn btn-secondary">
+                <Link 
+                  to="/contact?subject=Quantum Computing&template=quantum-computing#contact-form" 
+                  className="btn btn-secondary"
+                >
                   Request Implementation
                 </Link>
               </div>
@@ -344,17 +347,33 @@ const CaseStudyQuantumComputing = () => {
       <section className="section bg-gradient-to-r from-primary-600 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-hero-pattern opacity-10" />
         <div className="container-custom relative z-10 text-center">
-          <div className="bg-white border border-secondary-100 rounded-3xl p-12 max-w-3xl mx-auto shadow-2xl">
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-white border border-secondary-100 rounded-3xl p-12 max-w-3xl mx-auto shadow-2xl"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
               Ready to Explore Quantum Solutions?
             </h2>
             <p className="text-xl mb-8 text-secondary-700 max-w-2xl mx-auto">
               Contact us today to discuss how our quantum computing expertise can transform your organization's capabilities.
             </p>
-            <Link to="/contact" className="btn bg-white text-primary-700 hover:bg-secondary-50">
-              Schedule a Consultation
-            </Link>
-          </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="btn bg-white text-purple-600 hover:bg-gray-100">
+                <ExternalLink className="mr-2" size={18} />
+                Try Quantum Demo
+              </button>
+              <Link 
+                to="/contact?subject=Quantum Computing&template=quantum-computing#contact-form" 
+                className="btn bg-purple-500 text-white hover:bg-purple-400"
+              >
+                Schedule Consultation
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>

@@ -7,9 +7,10 @@ interface ServiceCardProps {
   description: string;
   icon: React.ReactNode;
   link: string;
+  showLearnMore?: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, link }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, link, showLearnMore = true }) => {
   return (
     <div className="group relative">
       <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
