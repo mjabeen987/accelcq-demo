@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Shield, Cpu, Server, BarChart, Code, Globe, Users, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Shield, Cpu, Server, BarChart, Code, Globe, Users, ArrowRight, ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 import SectionHeading from '../components/common/SectionHeading';
 import ServiceCard from '../components/common/ServiceCard';
 
 // Animation variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 }
 };
 
@@ -17,9 +17,19 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2
+      staggerChildren: 0.15
     }
   }
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0 }
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0 }
 };
 
 const Home = () => {
@@ -99,8 +109,6 @@ const Home = () => {
     }
   ];
 
-
-
   // Stats data
   const stats = [
     { value: '99.9%', label: 'Uptime Reliability' },
@@ -117,60 +125,88 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-primary-900 opacity-90 z-0" />
-        <div 
-          className="absolute inset-0 z-0 bg-cover opacity-15"
-          style={{ 
-            backgroundImage: "url('/ChatGPT Image Jul 9, 2025, 02_13_06 PM.png')",
-            backgroundPosition: 'center 75%'
-          }}
-        />
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-800/95 via-purple-800/90 to-blue-800/95" />
 
         <div className="container-custom relative z-10 pt-28 md:pt-0">
           <motion.div 
-            className="max-w-3xl"
-            initial={{ opacity: 0, y: 30 }}
+            className="max-w-4xl"
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <span className="inline-block px-3 py-1 bg-primary-600 text-white rounded-full text-sm font-medium mb-5">
+            <motion.span 
+              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-sm font-medium mb-8 shadow-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Shield size={16} className="mr-2" />
               Securing the AI Revolution
-            </span>
-            <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Accelerating Confidential & Quantum <span className="text-primary-400">Computing</span>
-            </h1>
-            <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
+            </motion.span>
+            
+            <motion.h1 
+              className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 tracking-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              Accelerating{' '}
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Confidential & Quantum
+              </span>{' '}
+              Computing
+            </motion.h1>
+            
+            <motion.p 
+              className="text-slate-200 text-xl md:text-2xl mb-10 max-w-3xl leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+            >
               Addressing Security, Scale & Performance in the AI Era
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn btn-primary">
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-wrap gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+            >
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
                 Get Started
+                <ArrowRight className="ml-2" size={20} />
               </Link>
-              <Link to="/services" className="btn btn-secondary">
+              <Link 
+                to="/services" 
+                className="inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
+              >
                 Explore Solutions
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
         
         {/* Animated scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
           <motion.div 
-            className="w-8 h-12 border-2 border-white rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
           >
             <motion.div 
-              className="w-1.5 h-3 bg-white rounded-full mt-2"
+              className="w-1 h-3 bg-white rounded-full mt-2"
               animate={{ 
-                y: [0, 12, 0],
-                opacity: [1, 0.5, 1]
+                y: [0, 16, 0],
+                opacity: [1, 0.3, 1]
               }}
               transition={{ 
                 repeat: Infinity,
-                duration: 1.5,
+                duration: 2,
                 ease: "easeInOut"
               }}
             />
@@ -179,12 +215,22 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="section bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="container-custom">
-          <SectionHeading
-            title="Our Services"
-            subtitle="AccelCQ delivers next-generation confidential and quantum computing solutions that are production-ready today, transforming how enterprises secure and accelerate their most critical workloads."
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Our Services
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              AccelCQ delivers next-generation confidential and quantum computing solutions that are production-ready today, transforming how enterprises secure and accelerate their most critical workloads.
+            </p>
+          </motion.div>
 
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -195,7 +241,19 @@ const Home = () => {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <ServiceCard {...service} showLearnMore={false} />
+                <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-slate-100">
+                  <div className="w-14 h-14 bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
+                  <Link 
+                    to={service.link}
+                    className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-colors"
+                  >
+                    Learn More <ArrowRight className="ml-2" size={16} />
+                  </Link>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -203,59 +261,71 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="section">
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              variants={slideInLeft}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-primary-600 font-semibold mb-2 block">About AccelCQ Inc</span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-6">
+                About AccelCQ Inc
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
                 Pioneering the Future of Secure Computing
               </h2>
-              <p className="text-gray-600 mb-4">
-                At AccelCQ Inc, we combine expertise in confidential computing and quantum technologies to provide cutting-edge solutions that address the most challenging computational problems while maintaining the highest security standards.
-              </p>
-              <p className="text-gray-600 mb-6">
-                Our team of experts, with backgrounds from leading tech companies and research institutions, is dedicated to pushing the boundaries of what's possible in secure and high-performance computing.
-              </p>
+              <div className="space-y-6 mb-8">
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  At AccelCQ Inc, we combine expertise in confidential computing and quantum technologies to provide cutting-edge solutions that address the most challenging computational problems while maintaining the highest security standards.
+                </p>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  Our team of experts, with backgrounds from leading tech companies and research institutions, is dedicated to pushing the boundaries of what's possible in secure and high-performance computing.
+                </p>
+              </div>
               
-              <div className="space-y-3 mb-8">
+              <div className="space-y-4 mb-10">
                 {[
                   { icon: <Shield size={20} />, text: "Industry-leading secure computing solutions" },
                   { icon: <Globe size={20} />, text: "Global delivery with local expertise" },
                   { icon: <Users size={20} />, text: "Team of top researchers and engineers" }
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="text-primary-600 mr-3 mt-1">{item.icon}</div>
-                    <p className="text-gray-700">{item.text}</p>
+                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mr-4 mt-0.5 flex-shrink-0">
+                      <CheckCircle size={16} />
+                    </div>
+                    <p className="text-slate-700 text-lg">{item.text}</p>
                   </div>
                 ))}
               </div>
               
-              <Link to="/about" className="btn btn-primary">
+              <Link 
+                to="/about" 
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
                 Learn More About Us
+                <ArrowRight className="ml-2" size={20} />
               </Link>
             </motion.div>
             
             <motion.div 
               className="relative"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              variants={slideInRight}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               {/* Value Proposition Carousel */}
-              <div className="relative rounded-lg overflow-hidden shadow-xl">
-                <div className="relative h-80 md:h-96">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative h-96 md:h-[28rem]">
                   {valuePropositions.map((slide, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 transition-opacity duration-500 ${
-                        index === currentSlide ? 'opacity-100' : 'opacity-0'
+                      className={`absolute inset-0 transition-all duration-700 ${
+                        index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                       }`}
                     >
                       <img 
@@ -263,7 +333,7 @@ const Home = () => {
                         alt={slide.title} 
                         className="w-full h-full object-cover" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     </div>
                   ))}
                 </div>
@@ -271,25 +341,25 @@ const Home = () => {
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white hover:bg-white/30 transition-colors"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
                 >
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white hover:bg-white/30 transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
                 >
-                  <ChevronRight size={20} />
+                  <ChevronRight size={24} />
                 </button>
 
                 {/* Slide Indicators */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
                   {valuePropositions.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentSlide ? 'bg-white' : 'bg-white/50'
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
                       }`}
                     />
                   ))}
@@ -297,23 +367,23 @@ const Home = () => {
               </div>
 
               {/* Current Slide Info Card */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg w-72">
+              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-2xl w-80 border border-slate-100">
                 <div className="flex items-start">
-                  <div className={`p-2 rounded-md mr-3 ${
-                    valuePropositions[currentSlide].color === 'primary' ? 'bg-primary-50 text-primary-600' :
-                    valuePropositions[currentSlide].color === 'secondary' ? 'bg-secondary-50 text-secondary-600' :
-                    'bg-accent-50 text-accent-600'
-                  }`}>
+                                     <div className={`p-3 rounded-xl mr-4 ${
+                     valuePropositions[currentSlide].color === 'primary' ? 'bg-purple-50 text-purple-600' :
+                     valuePropositions[currentSlide].color === 'secondary' ? 'bg-blue-50 text-blue-600' :
+                     'bg-slate-50 text-slate-600'
+                   }`}>
                     {valuePropositions[currentSlide].icon}
                   </div>
                   <div className="flex-1">
-                    <p className="font-semibold text-gray-900 mb-1">
+                    <h4 className="font-bold text-slate-900 mb-2 text-lg">
                       {valuePropositions[currentSlide].title}
-                    </p>
-                    <p className="text-sm text-gray-600 mb-2">
+                    </h4>
+                    <p className="text-slate-700 mb-3 font-medium">
                       {valuePropositions[currentSlide].description}
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-sm text-slate-500 leading-relaxed">
                       {valuePropositions[currentSlide].details}
                     </p>
                   </div>
@@ -325,45 +395,66 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section bg-primary-900 text-white">
+      <section className="py-24 bg-gradient-to-r from-slate-800 via-purple-800 to-blue-800">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Trusted by Industry Leaders
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Our solutions deliver measurable results that drive business transformation
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {stats.map((stat, index) => (
               <motion.div 
                 key={index} 
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
+                className="text-center group"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <p className="text-4xl md:text-5xl font-bold mb-2 text-primary-300">{stat.value}</p>
-                <p className="text-gray-300">{stat.label}</p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                  <p className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">
+                    {stat.value}
+                  </p>
+                  <p className="text-slate-300 text-lg font-medium">{stat.label}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-
-
       {/* CTA Section */}
-      <section className="section bg-gradient-to-r from-primary-800 to-secondary-800 text-white">
+      <section className="py-24 bg-gradient-to-r from-purple-600 via-blue-600 to-blue-700">
         <div className="container-custom text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
               Ready to Transform Your Computing Capabilities?
             </h2>
-            <p className="text-gray-200 max-w-3xl mx-auto mb-8 text-lg">
+            <p className="text-blue-100 max-w-4xl mx-auto mb-12 text-xl leading-relaxed">
               Contact us today to discover how our confidential computing and quantum solutions can secure your data and accelerate your business.
             </p>
-            <Link to="/contact" className="btn bg-white text-primary-800 hover:bg-gray-100">
-              Schedule a Consultation <ArrowRight className="ml-2" size={18} />
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center px-10 py-5 bg-white text-purple-600 font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 text-lg"
+            >
+              Schedule a Consultation 
+              <ArrowRight className="ml-3" size={24} />
             </Link>
           </motion.div>
         </div>

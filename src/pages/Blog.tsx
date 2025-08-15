@@ -185,24 +185,24 @@ const Blog = () => {
       />
 
       {/* Search & Filter Section */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-12 bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="relative w-full md:w-auto">
               <input
                 type="text"
                 placeholder="Search articles..."
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="pl-10 pr-4 py-3 border border-slate-200 rounded-xl w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 shadow-sm"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
+              <Search className="absolute left-3 top-3 text-slate-400" size={20} />
             </div>
             
-            <div className="flex items-center space-x-2 w-full md:w-auto">
-              <span className="text-gray-700">Filter by:</span>
+            <div className="flex items-center space-x-3 w-full md:w-auto">
+              <span className="text-slate-700 font-medium">Filter by:</span>
               <select 
-                className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 shadow-sm bg-white"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
@@ -216,7 +216,7 @@ const Blog = () => {
       </section>
 
       {/* Blog Posts Section */}
-      <section className="section">
+      <section className="py-24 bg-white">
         <div className="container-custom">
           {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -234,9 +234,9 @@ const Blog = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <h3 className="text-xl font-semibold mb-2">No articles found</h3>
-              <p className="text-gray-600">
+            <div className="text-center py-16">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">No articles found</h3>
+              <p className="text-slate-600 text-lg">
                 Try adjusting your search or filter to find what you're looking for.
               </p>
             </div>
@@ -245,9 +245,9 @@ const Blog = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="section bg-primary-50">
+      <section className="py-24 bg-gradient-to-br from-purple-50 to-blue-50">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
               variants={fadeIn}
               initial="hidden"
@@ -255,25 +255,25 @@ const Blog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">Stay Updated</h2>
               
               {!isSubscribed ? (
                 <>
-                  <p className="text-gray-600 mb-8">
+                  <p className="text-slate-600 mb-10 text-xl leading-relaxed max-w-2xl mx-auto">
                     Subscribe to our newsletter to receive the latest insights and updates on confidential computing and quantum technologies.
                   </p>
                   
                   {subscriptionError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4 max-w-md mx-auto">
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-xl mb-6 max-w-md mx-auto shadow-sm">
                       {subscriptionError}
                     </div>
                   )}
                   
-                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-6">
                     <input
                       type="email"
                       placeholder="Your email address"
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="flex-1 px-6 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 shadow-sm"
                       value={email}
                       onChange={(e) => {
                         setEmail(e.target.value);
@@ -284,22 +284,22 @@ const Blog = () => {
                     />
                     <button 
                       type="submit" 
-                      className="bg-primary-600 text-white px-6 py-3 rounded-md font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       disabled={isLoading}
                     >
                       {isLoading ? 'Subscribing...' : 'Subscribe'}
                     </button>
                   </form>
                   
-                  <p className="text-gray-500 text-sm mt-4">
+                  <p className="text-slate-500 text-sm">
                     We respect your privacy. Unsubscribe at any time.
                   </p>
                 </>
               ) : (
                 <div className="text-center">
-                  <div className="bg-green-100 border border-green-300 rounded-lg p-6 mb-4 max-w-md mx-auto">
-                    <h3 className="text-green-800 font-semibold text-lg mb-2">Thank you for subscribing!</h3>
-                    <p className="text-green-700">
+                  <div className="bg-green-50 border border-green-200 rounded-2xl p-8 mb-6 max-w-md mx-auto shadow-lg">
+                    <h3 className="text-green-800 font-bold text-xl mb-3">Thank you for subscribing!</h3>
+                    <p className="text-green-700 leading-relaxed">
                       We've received your subscription to {email}. You'll receive the latest insights and updates on confidential computing and quantum technologies.
                     </p>
                   </div>
@@ -308,7 +308,7 @@ const Blog = () => {
                       setIsSubscribed(false);
                       setEmail('');
                     }}
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors"
+                    className="text-purple-600 hover:text-purple-700 font-semibold transition-colors"
                   >
                     Subscribe another email
                   </button>

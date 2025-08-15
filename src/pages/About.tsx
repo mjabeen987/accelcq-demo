@@ -90,11 +90,11 @@ const About = () => {
       />
 
       {/* Mission Section */}
-      <section className="section">
+      <section className="py-24 bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
-              className="rounded-lg overflow-hidden shadow-xl"
+              className="rounded-2xl overflow-hidden shadow-2xl"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -115,43 +115,57 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-              <p className="text-gray-600 mb-6 text-lg">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">Our Mission</h2>
+              <div className="space-y-6">
+                <p className="text-slate-600 text-lg leading-relaxed">
                 At AccelCQ LLC, our mission is to revolutionize computing by seamlessly integrating confidential computing security with quantum computing power, enabling organizations to process their most sensitive data with unprecedented speed and security.
               </p>
-              <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 leading-relaxed">
                 Founded in 2021 by experts from leading technology companies and research institutions, AccelCQ was born from the recognition that as computing power advances, so too must the security protecting that data.
               </p>
-              <p className="text-gray-600">
+                <p className="text-slate-600 leading-relaxed">
                 We envision a future where quantum computing capabilities are accessible to all organizations while maintaining the highest standards of data protection through confidential computing technologies.
               </p>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="section bg-gray-50">
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="container-custom">
-          <SectionHeading
-            title="Our Core Values"
-            subtitle="The principles that guide our work and relationships with clients"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Our Core Values
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              The principles that guide our work and relationships with clients
+            </p>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-slate-100"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-primary-600 mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">{value.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -160,16 +174,26 @@ const About = () => {
 
       {/* 
       Timeline Section - Commented out for now, will be restored later with more content
-      <section className="section">
+      <section className="py-24 bg-white">
         <div className="container-custom">
-          <SectionHeading
-            title="Our Journey"
-            subtitle="The key milestones in our company's growth and innovation"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Our Journey
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              The key milestones in our company's growth and innovation
+            </p>
+          </motion.div>
           
           <div className="relative">
             Timeline line
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-100"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-purple-100"></div>
             
             <div className="relative">
               Timeline items
@@ -212,12 +236,12 @@ const About = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{item.description}</p>
                   </div>
                   
                   <div className="relative flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center font-semibold z-10">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white flex items-center justify-center font-semibold z-10">
                       {item.year}
                     </div>
                   </div>
@@ -231,12 +255,22 @@ const About = () => {
       </section>
 
       Team Section - Commented out for now, will be restored later with more content
-      <section className="section bg-gray-50">
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="container-custom">
-          <SectionHeading
-            title="Our Leadership Team"
-            subtitle="Meet the experts driving innovation at AccelCQ LLC"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Our Leadership Team
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              Meet the experts driving innovation at AccelCQ LLC
+            </p>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
